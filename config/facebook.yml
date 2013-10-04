@@ -1,0 +1,14 @@
+development:
+  :app_id: "166052670263191"
+  :app_secret: "d57f8700c5c118ea77021c09b0178aca"
+  :domain: "canvas.moncl.net:3000"
+
+test:
+  :app_id: "166052670263191"
+  :app_secret: "d57f8700c5c118ea77021c09b0178aca"
+  :domain: "canvas.moncl.net"
+
+production:
+  :app_id: "166052670263191"
+  :app_secret: "d57f8700c5c118ea77021c09b0178aca"
+  :domain: "canvas.moncl.net"
