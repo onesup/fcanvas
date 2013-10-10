@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :wall_post do
-    message "MyString"
-    user ""
+    message "행복해야돼"
+    user
     options "MyText"
   end
 end

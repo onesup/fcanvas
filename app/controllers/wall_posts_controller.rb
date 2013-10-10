@@ -1,9 +1,9 @@
 class WallPostsController < ApplicationController
   def create
-    unless session[:uid]
+    unless session[:facebook_uid]
       redirect_to root_path
     else
-      user = User.find_by_uid(session[:uid])
+      user = User.find_by_uid(session[:facebook_uid])
       @wall_post = user.wall_posts.new(wall_post_params)    
       respond_to do |format|
         if @wall_post.save

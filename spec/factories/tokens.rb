@@ -1,19 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 # TOKEN = YAML.load_file("#{Rails.root}/config/test_token.yml")
-# FactoryGirl.define do
-#   factory :auth, class:Hash do
-#     credentials :token => "123"
-#     initialize_with { attributes }
-#   end
-#   
-#   factory :test_token, class:Hash do
-#     user TOKEN[:user]
-#     page TOKEN[:page]
-#     page_uid TOKEN[:page_uid]
-#     initialize_with { attributes }
-#   end
-# 
-#   factory :token do
-#     access_token "this_is_exist_token"
-#   end
-# end
+FactoryGirl.define do
+
+  factory :token do
+    access_token "CAACXBiZAsz5cBAKaukrkfzZCTYxRUsijqMZCJbF1MKMBLnrvV8jkfKk8z67SPrP03JZCvEgAL6g5xx8oCtHAudCbwr2JX4RHC0CvT67uQV6D1LpgyUZCU8Wv5mLMFKnMsofe4QoZABHn2vVkOyQqaLdVrfaqylAvWKwAeRbWsove4gRk2Of5XxmJZAtzDAZAebQZD"
+  end
+end

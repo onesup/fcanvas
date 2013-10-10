@@ -2,7 +2,7 @@ class WallPost < ActiveRecord::Base
   belongs_to :user
   
   def post_message
-    "영웅" + self.user.name + "짱짱맨님의 메세지" + self.message
+    "영웅 #{self.user.name} 님의 메세지 #{self.message}"
   end
   
   def post
