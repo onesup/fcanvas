@@ -2,7 +2,7 @@ require "tmpdir"
 TMP_DIR = Dir.tmpdir
 USER_NAME = "onesup"
 APP_NAME = "fcanvas"
-APP_PATH = File.expand_path("/home/#{USER_NAME}/#{APP_NAME}/current")
+APP_PATH = File.expand_path("/home/#{USER_NAME}/www/#{APP_NAME}/current")
 
 root = "#{APP_PATH}"
 working_directory root
