@@ -1,12 +1,5 @@
 <h1>이벤트 페이지</h1>
-<p>
-<%= request.env['facebook.params'] %>
-<%= request.env['omniauth.auth'] %>
-</p>
-<p>
-<%= session[:facebook_uid] %>
-<%= session[:facebook_token] %>
-</p>
+<%= @wall_posts.count * 5000 %>원 적립
 <ul>
 <% @wall_posts.each do |post| %>
 <li><%= post.message %></li>
