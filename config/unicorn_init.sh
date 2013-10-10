@@ -4,13 +4,13 @@ set -e
 # Feel free to change any of the following variables for your app:
 TIMEOUT=${TIMEOUT-60}
 #여기 수정 필요
-USER_NAME=onesup
+AS_USER=onesup
 APP_NAME=fcanvas
 
-APP_ROOT=/home/$USER_NAME/www/$APP_NAME/current
+APP_ROOT=/home/$AS_USER/www/$APP_NAME/current
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
-AS_USER=daul
+
 set -u
  
 OLD_PIN="$PID.oldbin"

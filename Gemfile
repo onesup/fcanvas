@@ -15,6 +15,8 @@ gem 'omniauth', '>= 1.1.4'
 gem 'omniauth-facebook', '>= 1.4.1'
 gem 'koala', '>= 1.7.0rc1'
 gem 'simple_form', '>= 3.0.0'
+gem 'unicorn'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
