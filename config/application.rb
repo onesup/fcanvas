@@ -11,7 +11,7 @@ module Fcanvas
     config.force_ssl = false
     config.time_zone = 'Asia/Seoul'
     config.i18n.default_locale = :ko_KR
-    FACEBOOK_CONFIG = YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env]    
+    FACEBOOK_CONFIG = YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env]
     config.middleware.use Rack::Facebook::SignedRequest, app_id: FACEBOOK_CONFIG[:app_id], secret: FACEBOOK_CONFIG[:app_secret], inject_facebook: false
   end
 end

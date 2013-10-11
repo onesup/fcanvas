@@ -19,6 +19,12 @@ GIT
       yajl-ruby
       yajl-ruby
 
+GIT
+  remote: git://github.com/langalex/facebook-signed-request.git
+  revision: a082595d7b2859852bf8c3802da13ac62575b490
+  specs:
+    facebook-signed-request (0.2.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -262,6 +268,7 @@ DEPENDENCIES
   database_cleaner
   email_spec
   execjs
+  facebook-signed-request!
   factory_girl_rails
   fb-channel-file
   guard-rails

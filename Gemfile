@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 gem 'execjs'
 gem 'therubyracer'
-gem 'sqlite3'
-gem 'mysql2'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -12,11 +10,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'fb-channel-file'
 gem 'rack-facebook-signed-request', :git => 'git://github.com/cmer/rack-facebook-signed-request.git'
+gem 'facebook-signed-request', :git => 'git://github.com/langalex/facebook-signed-request.git'
 gem 'omniauth', '>= 1.1.4'
 gem 'omniauth-facebook', '>= 1.4.1'
 gem 'koala', '>= 1.7.0rc1'
 gem 'simple_form', '>= 3.0.0'
-gem 'unicorn'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -24,6 +23,7 @@ group :doc do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'thin'
   gem 'pry'
   gem 'capistrano', github: "capistrano/capistrano"
@@ -32,6 +32,8 @@ end
 
 group :production do
   # gem 'rb-readline', '~> 0.5.0'
+  gem 'mysql2'
+  gem 'unicorn'
 end
 
 group :test do

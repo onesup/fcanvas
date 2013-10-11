@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+  
+  def allow_iframe
+    response.headers["X-Frame-Options"] = "GOFORIT"
+  end
 
   helper_method :current_user
 
