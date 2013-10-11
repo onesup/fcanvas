@@ -133,6 +133,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.0)
     multipart-post (1.2.0)
+    mysql2 (0.3.13)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -268,6 +269,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   koala (>= 1.7.0rc1)
+  mysql2
   omniauth (>= 1.1.4)
   omniauth-facebook (>= 1.4.1)
   pry

@@ -39,10 +39,11 @@ namespace :deploy do
   after "deploy:setup", "deploy:setup_config"
   
   task :upload_parameters do
-    # origin_file = "config/email.yml"
-    # destination_file = "#{shared_path}/config/email.yml"
-    # run "mkdir -p #{File.dirname(destination_file)}"
-    # top.upload(origin_file, destination_file)
+    origin_file = "lib/server.crt"
+    destination_file = "#{shared_path}/lib/server.crt"
+    run "mkdir -p #{File.dirname(destination_file)}"
+    top.upload(origin_file, destination_file)
+
     origin_file = "config/facebook.yml"
     destination_file = "#{shared_path}/config/facebook.yml"
     run "mkdir -p #{File.dirname(destination_file)}"
@@ -63,6 +64,7 @@ namespace :deploy do
   desc "Make symlink for custom config yaml"
   task :symlink_parameters do
     run "ln -nfs #{shared_path}/config/facebook.yml #{latest_release}/config/facebook.yml"
+    run "ln -nfs #{shared_path}/lib/server.crt #{latest_release}/lib/server.crt"
     # run "ln -nfs #{shared_path}/config/email.yml #{latest_release}/config/email.yml"
   end
   after "deploy:finalize_update", "deploy:symlink_parameters"
