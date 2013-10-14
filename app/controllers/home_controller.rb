@@ -1,24 +1,13 @@
 class HomeController < ApplicationController
   
-  # def index
-  #   if request.env['REQUEST_PATH'] == '/page_tab/'
-  #     require_like
-  #   else
-  #     redirect_to canvas_path
-  #   end
-  #   @wall_post = WallPost.new
-  #   @wall_posts = WallPost.all
-  # end
-  
   def index
     @user_agent = UserAgent.parse(request.user_agent)
-    if @user_agent.mobile?
+    if @user_agent.mobile? or request.env['facebook.params'].nil?
       redirect_to mobile_path
     else
+      flash[:facebook_params] = request.env['facebook.params']
       redirect_to page_tab_path
     end
-    # @wall_post = WallPost.new
-    # @wall_posts = WallPost.all
     
   end
   

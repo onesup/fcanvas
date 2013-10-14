@@ -33,11 +33,18 @@ window.fbAsyncInit = function() {
   FB.Canvas.setSize();
   FB.Canvas.setAutoGrow();
   FB.Event.subscribe('edge.create',
-        function(href, widget) {
-          location.reload();
-          location.href()
-        }
-    );
+    function(href, widget) {
+      $('.fb_edge_comment_widget.fb_iframe_widget').remove()   
+      
+      location.reload();
+    }
+  );
+  FB.Event.subscribe('edge.remove',
+    function(href, widget) {
+      location.reload();
+      }
+  );
+  
 };
 
 (function(d){
@@ -49,6 +56,10 @@ window.fbAsyncInit = function() {
 }(document));
 
 </script>
+<fb:like href="https://www.facebook.com/pages/ThchStartup/1377173915843709" colorscheme="light" layout="button_count" action="like" show_faces="false" send="false"></fb:like>
+
+
+
 <%= yield %>
 
 
