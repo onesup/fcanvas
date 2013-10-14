@@ -1,15 +1,14 @@
 class HomeController < ApplicationController
-  after_filter :allow_iframe
   
-  def index
-    if request.env['REQUEST_PATH'] == '/page_tab/'
-      require_like
-    else
-      redirect_to canvas_path
-    end
-    @wall_post = WallPost.new
-    @wall_posts = WallPost.all
-  end
+  # def index
+  #   if request.env['REQUEST_PATH'] == '/page_tab/'
+  #     require_like
+  #   else
+  #     redirect_to canvas_path
+  #   end
+  #   @wall_post = WallPost.new
+  #   @wall_posts = WallPost.all
+  # end
   
   def index
     @user_agent = UserAgent.parse(request.user_agent)
