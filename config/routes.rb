@@ -1,6 +1,5 @@
 Fcanvas::Application.routes.draw do
 
-  get "canvas/index"
   root 'home#index'
   get 'canvas' => 'home#canvas'
   post 'page_tab' => 'home#index'
