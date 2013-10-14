@@ -3,6 +3,7 @@ Fcanvas::Application.routes.draw do
   get 'canvas' => 'home#canvas'
   get 'mobile' => 'm#index'
   get 'mobile_gate' => 'm#fan_gate'
+  get 'mobile_contents' => 'm#contents'
   get 'page_tab' => 'page_tab#index'
   get 'page_tab_gate' => 'page_tab#fan_gate'
 

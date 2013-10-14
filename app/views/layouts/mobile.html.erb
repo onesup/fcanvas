@@ -2,11 +2,11 @@
 <html xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#">
 <head>
   <title>Fcanvas</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "mobile", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="main">
   <div id="fb-root"></div>
   <script>
 window.fbAsyncInit = function() {
@@ -34,8 +34,6 @@ window.fbAsyncInit = function() {
   FB.Canvas.setAutoGrow();
   FB.Event.subscribe('edge.create',
     function(href, widget) {
-      $('.fb_edge_comment_widget.fb_iframe_widget').remove()   
-      
       location.reload();
     }
   );
