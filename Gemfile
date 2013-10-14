@@ -10,11 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'fb-channel-file'
 gem 'rack-facebook-signed-request', :git => 'git://github.com/cmer/rack-facebook-signed-request.git'
-gem 'facebook-signed-request', :git => 'git://github.com/langalex/facebook-signed-request.git'
-gem 'omniauth', '>= 1.1.4'
-gem 'omniauth-facebook', '>= 1.4.1'
 gem 'koala', '>= 1.7.0rc1'
 gem 'simple_form', '>= 3.0.0'
+gem 'useragent', '>= 0.2.1'
 
 
 group :doc do
