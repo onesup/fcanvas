@@ -17,4 +17,8 @@ module ApplicationHelper
     numbers = numbers.gsub(/\<div class\=\"n\"\>\<img alt\=\"\,\" src\=\"\/images\/page\_tab\/num\/\,\.jpg\" \/\>\<\/div\>/){|s| '<div class="n spacer">&nbsp</div>'}
   end
   
+  def fans_to_boxes(number)
+    number / 50
+  end
+  
 end

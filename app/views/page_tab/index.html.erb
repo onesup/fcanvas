@@ -48,10 +48,9 @@
                   	<li class="blank">
                       </li>
                       <!-- 10-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
+                    <%#= fans_to_boxes(60) %>
+                  	<li class="fill_01"></li>
+                  	<li class="blank"></li>
                   	<li class="blank">
                       </li>
                   	<li class="blank">
@@ -258,7 +257,10 @@
     <% end %>
   </div><!--end:comment list-->
   <div class="txt_bottom">
-    <%= image_tag "page_tab/txt_bottom.jpg" %>
+    <%= image_tag "page_tab/txt_bottom.jpg", border: "0", usemap: "#map" %>
+    <map name="Map" id="Map">
+      <area shape="rect" coords="506,112,633,135" href="#" />
+    </map>
   </div>
 </div>
 <div class="pop_wrap" id="comment_complete_popup">
