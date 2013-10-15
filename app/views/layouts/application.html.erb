@@ -9,7 +9,7 @@
 <body id="main">
   <p><%= flash[:popup] %></p>
   <div id="fb-root"></div>
-  <script>
+  <script type="text/javascript">
   $( "#new_page_tab_wall_post" ).validate();  
   ;(function($) {
       $(function() {
@@ -17,22 +17,24 @@
               e.preventDefault();
               $('#comment_popup').bPopup({
                 follow: [false, false], //x, y
-                position: [101, 800] //x, y
+                position: [101, 850] //x, y
               });
           });
+
           $(document).ready(function(){
             <% if flash[:popup] == "complete" %>
               $('#comment_complete_popup').bPopup({
                 follow: [false, false], //x, y
-                position: [200, 800] //x, y
+                position: [200, 850] //x, y
               });
             <% elsif flash[:popup] == "invalid" %>
               $('#comment_invalid_popup').bPopup({
                 follow: [false, false], //x, y
-                position: [200, 800] //x, y
+                position: [200, 850] //x, y
               });
-            <% end %>            
+            <% end %>
           });
+
       });
   })(jQuery);
 

@@ -13,7 +13,7 @@ gem 'rack-facebook-signed-request', :git => 'git://github.com/cmer/rack-facebook
 gem 'koala', '>= 1.7.0rc1'
 gem 'simple_form', '>= 3.0.0'
 gem 'useragent', '>= 0.2.1'
-
+gem 'p3p'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -139,6 +139,8 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    p3p (1.0.0)
+      rack
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -253,6 +255,7 @@ DEPENDENCIES
   jquery-rails
   koala (>= 1.7.0rc1)
   mysql2
+  p3p
   pry
   rack-facebook-signed-request!
   rails (= 4.0.0)
