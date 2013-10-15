@@ -14,7 +14,8 @@ class PageTab::WallPostsController < ApplicationController
           format.html { redirect_to page_tab_path}
           format.json { render json: @wall_post, status: :created, location: @wall_post }
         else
-          format.html { redirect_to root_path }
+          flash[:popup] = "invalid"
+          format.html { redirect_to page_tab_path }
           format.json { render json: @wall_post.errors, status: :unprocessable_entity }
         end
       end

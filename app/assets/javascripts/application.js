@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require jquery-ui
 //= require jquery.bpopup.min
+//= require jquery.validate
 //= require_tree .

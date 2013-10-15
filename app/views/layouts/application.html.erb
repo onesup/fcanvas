@@ -4,14 +4,13 @@
   <title>Hospital</title>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%#= javascript_include_tag "jquery-ui" %>
-  <%#= javascript_include_tag "jquery.bpopup.min" %>
   <%= csrf_meta_tags %>
 </head>
 <body id="main">
   <p><%= flash[:popup] %></p>
   <div id="fb-root"></div>
   <script>
+  $( "#new_page_tab_wall_post" ).validate();  
   ;(function($) {
       $(function() {
           $('#comment_open').bind('click', function(e) {
@@ -21,17 +20,20 @@
                 position: [101, 800] //x, y
               });
           });
-          <% if flash[:popup] == "complete" %>
-            $(document).ready(function(){
+          $(document).ready(function(){
+            <% if flash[:popup] == "complete" %>
               $('#comment_complete_popup').bPopup({
                 follow: [false, false], //x, y
                 position: [200, 800] //x, y
               });
-            });
-          <% end %>
-          
+            <% elsif flash[:popup] == "invalid" %>
+              $('#comment_invalid_popup').bPopup({
+                follow: [false, false], //x, y
+                position: [200, 800] //x, y
+              });
+            <% end %>            
+          });
       });
-      
   })(jQuery);
 
 window.fbAsyncInit = function() {
@@ -43,18 +45,18 @@ window.fbAsyncInit = function() {
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
   });
-  <%# if current_page?(controller: 'home', action: 'index') %>
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        var uid = response.authResponse.userID;
-        var accessToken = response.authResponse.accessToken;
-      } else if (response.status === 'not_authorized') {
-        FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details'});
-      } else {
-      
-      }
-    });
-  <%# end %>
+
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+      var uid = response.authResponse.userID;
+      var accessToken = response.authResponse.accessToken;
+    } else if (response.status === 'not_authorized') {
+      FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details'});
+    } else {
+  
+    }
+  });
+
   FB.Canvas.setSize();
   FB.Canvas.setAutoGrow();
   FB.Event.subscribe('edge.create',

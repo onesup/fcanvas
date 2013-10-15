@@ -267,11 +267,17 @@
     <a href="#" class="btn_ok b-close" id="comment_complete_ok_btn">ok</a>
   </div>
 </div>
+<div class="pop_wrap" id="comment_invalid_popup">
+  <div class="pop_comment_invalid">
+    <a href="#" class="btn_close b-close" id="comment_close">Close</a>
+    <a href="#" class="btn_ok b-close" id="comment_invalid_ok_btn">ok</a>
+  </div>
+</div>
 <div class="pop_wrap" id="comment_popup">
 	<div class="pop_comment">  
     <a href="#" class="btn_close b-close" id="comment_close">Close</a>
-    <%= simple_form_for [:page_tab, @wall_post] do |f| %>
-      <%= f.input :message, input_html: {class: "input_comment"}, label: false%>
+    <%= simple_form_for [:page_tab, @wall_post], html:{id:"new_page_tab_wall_post"} do |f| %>
+      <%= f.input :message, input_html: {class: "input_comment"}, label: false, required: false%>
       <%= image_submit_tag("page_tab/pop/btn_comment.png", class: "button", id: "comment_submit") %>
       <% end %>
     <!-- <a href="#" class="btn_ok">OK</a> -->
