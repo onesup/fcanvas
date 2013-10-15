@@ -264,8 +264,8 @@
 
 <div class="pop_wrap" id="comment_popup">
 	<div class="pop_comment">  
-    <a href="#" class="btn_close">Close</a>
-    <%= simple_form_for @wall_post do |f| %>
+    <a href="#" class="btn_close b-close" id="comment_close">Close</a>
+    <%= simple_form_for [:page_tab, @wall_post] do |f| %>
       <%= f.input :message, input_html: {class: "input_comment"}, label: false%>
       <%= image_submit_tag("page_tab/pop/btn_comment.png", class: "button", id: "comment_submit") %>
       <% end %>

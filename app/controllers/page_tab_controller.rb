@@ -2,7 +2,7 @@ class PageTabController < ApplicationController
   def index
     require_like unless flash[:facebook_params].nil?
     @wall_post = WallPost.new
-    @wall_posts = WallPost.all
+    @wall_posts = WallPost.limit(5).order('created_at DESC')
     
   end
 

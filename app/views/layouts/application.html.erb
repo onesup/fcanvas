@@ -5,27 +5,24 @@
   <%= stylesheet_link_tag "page_tab", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "jquery-ui" %>
+  <%= javascript_include_tag "jquery.bpopup.min" %>
   <%= csrf_meta_tags %>
 </head>
 <body id="main">
   <div id="fb-root"></div>
   <script>
-  $(function() {
-    // this initializes the dialog (and uses some common options that I do)
-    $("#comment_popup").dialog({
-      autoOpen : false, 
-      modal : true, 
-      show : "blind", 
-      hide : "blind",
-      position: [110,20]
-    });
-
-    // next add the onclick handler
-    $("#comment_open").click(function() {
-      $("#comment_popup").dialog("open");
-      return false;
-    });
-  });
+  ;(function($) {
+      $(function() {
+          $('#comment_open').bind('click', function(e) {
+              e.preventDefault();
+              $('#comment_popup').bPopup({
+                follow: [false, false], //x, y
+                position: [100, 800] //x, y
+              });
+          });
+      });
+      
+  })(jQuery);
 
 window.fbAsyncInit = function() {
 // init the FB JS SDK
