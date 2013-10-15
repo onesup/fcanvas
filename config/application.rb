@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env)
 
 module Fcanvas
   class Application < Rails::Application
-    config.assets.enabled = false
+    config.assets.enabled = true
     config.force_ssl = false
     config.time_zone = 'Asia/Seoul'
     config.i18n.default_locale = :ko_KR

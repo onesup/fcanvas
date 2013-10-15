@@ -59,8 +59,6 @@ namespace :deploy do
   desc "Make symlink for custom config yaml"
   task :symlink_parameters do
     run "ln -nfs #{shared_path}/config/facebook.yml #{latest_release}/config/facebook.yml"
-    run "ln -nfs #{shared_path}/lib/server.crt #{latest_release}/lib/server.crt"
-    # run "ln -nfs #{shared_path}/config/email.yml #{latest_release}/config/email.yml"
   end
   after "deploy:finalize_update", "deploy:symlink_parameters"
   
