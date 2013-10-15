@@ -10,7 +10,7 @@ class PageTab::WallPostsController < ApplicationController
       respond_to do |format|
         if @wall_post.save
           @wall_post.post
-          format.html { redirect_to page_tab_path }
+          format.html { redirect_to page_tab_path, status: "complete" }
           format.json { render json: @wall_post, status: :created, location: @wall_post }
         else
           format.html { redirect_to root_path }
