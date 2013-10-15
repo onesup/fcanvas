@@ -72,11 +72,19 @@ width:573px;
 padding:253px 0 0 40px;	
 height:60px;
 }
-.wrap .title .num div{
+.wrap .title .num div.n{
 float:left;
 text-align:center;
-width:64px;
+width:57px;
+margin-right:16px;
 }
+
+.wrap .title .num div.spacer{
+  margin: 0;
+  margin-right: 4px;
+  width: 14px;
+}
+
 .wrap .title .num div.n_first,
 .wrap .title .num div.n_second,
 .wrap .title .num div.n_fourth,
@@ -90,7 +98,6 @@ width:64px;
 .wrap .title .num div.n_sixth{
 	padding-left:30px;
 }
-
 .btn_block{
 text-align:center;
 padding:25px 0; 

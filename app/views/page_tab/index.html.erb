@@ -3,8 +3,10 @@
     <div class="tt">
       댓글로 기부를! 이상한 기부!
     </div>
+    
     <div class="num clearfix">
-      <div class="n_seventh">
+      <%= raw number_to_big_image_tag(WallPost.count * 5000) %>
+      <!-- <div class="n_seventh">
         <img src="images/num/1.jpg" />
       </div>
       <div class="n_sixth">
@@ -24,7 +26,7 @@
       </div>
       <div class="n_first">
         <img src="images/num/0.jpg" />
-      </div>
+      </div> -->
     </div>
   </div><!--start:character _block-->
   <div>
@@ -263,11 +265,11 @@
       <!--start:comment_one-->
       <div class="comment_one clearfix">
         <div class="img">
-          <%= image_tag wall_post.user.profile_image %>
+          <%= image_tag wall_post.user.profile_image unless wall_post.user.nil? %>
         </div>
         <div class="txt_block">
           <p class="name">
-            <%= wall_post.user.name %>
+            <%= wall_post.user.name unless wall_post.user.nil? %>
           </p>
           <p class="txt">
             <%= wall_post.message%>
