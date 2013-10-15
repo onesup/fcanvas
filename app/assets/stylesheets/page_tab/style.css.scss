@@ -116,6 +116,8 @@ padding:25px 0;
 .comment_list_block .comment_one .txt_block{
 	float:left;
 }
+.comment_list_block .comment_one .txt_block .txt{
+  word-break:break-all;}
 .comment_list_block .comment_one .img{
 	width:60px;
 }

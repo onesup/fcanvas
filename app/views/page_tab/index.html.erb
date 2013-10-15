@@ -27,7 +27,7 @@
               <div class="status clearfix">
               	<ul class="s_first clearfix">
                   	<!-- 20-->
-                  	<li class="fill_02">
+                  	<li class="blank">
                       </li>
                   	<li class="blank">
                       </li>
@@ -48,29 +48,29 @@
                   	<li class="blank">
                       </li>
                       <!-- 10-->
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
-                  	<li class="fill_01">
+                  	<li class="blank">
                       </li>
                       <!--txt_block-->
                       <li class="txt_block">
-                        <%= image_tag "page_tab/status/1000_02.jpg" %>
+                        <%= image_tag "page_tab/status/1000_01.jpg" %>
                       </li>
                   </ul>
               	<ul class="s_second clearfix">
@@ -251,7 +251,7 @@
             <%= wall_post.user.name unless wall_post.user.nil? %>
           </p>
           <p class="txt">
-            <%= wall_post.message %>
+            <%= simple_format(wall_post.message) %>
           </p>
         </div>
       </div><!--end:comment_one-->

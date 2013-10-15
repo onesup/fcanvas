@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20131008051128) do
   end
 
   create_table "wall_posts", force: true do |t|
-    t.string   "message"
+    t.text     "message"
     t.integer  "user_id"
     t.text     "options"
     t.datetime "created_at"
