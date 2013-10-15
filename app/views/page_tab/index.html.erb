@@ -5,28 +5,7 @@
     </div>
     
     <div class="num clearfix">
-      <%= raw number_to_big_image_tag(WallPost.count * 5000) %>
-      <!-- <div class="n_seventh">
-        <img src="images/num/1.jpg" />
-      </div>
-      <div class="n_sixth">
-        <img src="images/num/7.jpg" />
-      </div>
-      <div class="n_fifth">
-        <img src="images/num/6.jpg" />
-      </div>
-      <div class="n_fourth">
-        <img src="images/num/6.jpg" />
-      </div>
-      <div class="n_third">
-        <img src="images/num/8.jpg" />
-      </div>
-      <div class="n_second">
-        <img src="images/num/3.jpg" />
-      </div>
-      <div class="n_first">
-        <img src="images/num/0.jpg" />
-      </div> -->
+      <%= raw number_to_big_image_tag(User.count) %>
     </div>
   </div><!--start:character _block-->
   <div>
@@ -37,7 +16,7 @@
   </div><!--end:movie _block--><!--start:btn_block-->
   <div class="btn_block">
     <p class="btn_comment">
-      <%= link_to image_tag("page_tab/btn_comment.jpg"), nil, {title: "영웅의 한마디 남기기"} %>
+      <%= link_to image_tag("page_tab/btn_comment.jpg"), nil, {title: "영웅의 한마디 남기기", id: "comment_open"} %>
     </p>
   </div><!--end:btn_block-->
   <!--start:status-->
@@ -272,7 +251,7 @@
             <%= wall_post.user.name unless wall_post.user.nil? %>
           </p>
           <p class="txt">
-            <%= wall_post.message%>
+            <%= wall_post.message %>
           </p>
         </div>
       </div><!--end:comment_one-->
@@ -283,9 +262,15 @@
   </div>
 </div>
 
-
-<%= @wall_posts.count * 5000 %>원 적립
-<%= simple_form_for @wall_post do |f| %>
-  <%= f.input :message %>
-  <%= f.button :submit %>  
-<% end %>
+<div class="pop_wrap" id="comment_popup">
+	<div class="pop_comment">  
+    <a href="#" class="btn_close">Close</a>
+    <%= simple_form_for @wall_post do |f| %>
+      <%= f.input :message, input_html: {class: "input_comment"}, label: false%>
+      <%= image_submit_tag("page_tab/pop/btn_comment.png", class: "button", id: "comment_submit") %>
+      <% end %>
+    <!-- <a href="#" class="btn_ok">OK</a> -->
+  </div>
+  <!-- e:pop_comment-->
+</div>
+<!-- e:pop_wrap-->

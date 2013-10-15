@@ -3,6 +3,7 @@ class PageTabController < ApplicationController
     require_like unless flash[:facebook_params].nil?
     @wall_post = WallPost.new
     @wall_posts = WallPost.all
+    
   end
 
   def fan_gate
