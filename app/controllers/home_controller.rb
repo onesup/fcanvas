@@ -1,8 +1,6 @@
 class HomeController < ApplicationController
-  
   def index
     @user_agent = UserAgent.parse(request.user_agent)
-    
     if @user_agent.mobile?
       flash[:facebook_params] = request.env['facebook.params']
       redirect_to mobile_path
@@ -10,7 +8,6 @@ class HomeController < ApplicationController
       flash[:facebook_params] = request.env['facebook.params']
       redirect_to page_tab_path
     end
-    
   end
   
   def page_tab_gate
