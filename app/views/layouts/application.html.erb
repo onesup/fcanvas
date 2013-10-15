@@ -9,18 +9,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="main">
+  <p><%= flash[:popup] %></p>
   <div id="fb-root"></div>
   <script>
   ;(function($) {
-    <% if flash[:status] == "complete" %>
-      $(document).ready(function(){
-        e.preventDefault();
-        $('#comment_complete_popup').bPopup({
-          follow: [false, false], //x, y
-          position: [101, 800] //x, y
-        });
-      });
-    <% end %>
       $(function() {
           $('#comment_open').bind('click', function(e) {
               e.preventDefault();
@@ -29,6 +21,15 @@
                 position: [101, 800] //x, y
               });
           });
+          <% if flash[:popup] == "complete" %>
+            $(document).ready(function(){
+              $('#comment_complete_popup').bPopup({
+                follow: [false, false], //x, y
+                position: [200, 800] //x, y
+              });
+            });
+          <% end %>
+          
       });
       
   })(jQuery);
