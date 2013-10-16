@@ -16,6 +16,10 @@ class WallPost < ActiveRecord::Base
       @oauth = Koala::Facebook::OAuth.new(FACEBOOK_CONFIG[:app_id], FACEBOOK_CONFIG[:app_secret])
       @facebook_params = @oauth.get_user_info_from_cookies(cookies)
       @oauth_token = @facebook_params['access_token']
+      uid = @facebook_params['user_id']
+      access_token = @facebook_params['access_token']
+      user = User.create_or_find_fan!(uid, access_token)
+      self.user = user
     else
       @oauth_token = user.token.access_token
     end
