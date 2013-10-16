@@ -1,5 +1,6 @@
 class PageTabController < ApplicationController
   def index
+    flash[:facebook_params] = request.env['facebook.params']
     require_like unless flash[:facebook_params].nil?
     @wall_post = WallPost.new
     @wall_posts = WallPost.limit(5).order('created_at DESC')
