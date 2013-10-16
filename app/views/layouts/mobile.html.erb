@@ -48,12 +48,26 @@ window.fbAsyncInit = function() {
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
   });
+  // FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details'});
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
+      $("#uid").val(uid);
+      $("#access_token").val(accessToken);
+      $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
+
+      });
     } else if (response.status === 'not_authorized') {
-      FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details'});
+      FB.login(function(response){
+        var uid = response.authResponse.userID;
+        var accessToken = response.authResponse.accessToken;
+        $("#uid").val(uid);
+        $("#access_token").val(accessToken);
+        $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
+
+        });        
+      },{scope: 'email, publish_stream, user_relationship_details'});
     } else {
     
     }

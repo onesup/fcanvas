@@ -1,6 +1,5 @@
 class PageTab::WallPostsController < ApplicationController
   def create
-    @user_agent = UserAgent.parse(request.user_agent)
     
     unless session[:facebook_uid]
       redirect_to root_path

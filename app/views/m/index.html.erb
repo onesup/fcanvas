@@ -1,12 +1,11 @@
-
 <div id="wrap">
     <header id="main_header">	
     <div class="title">
    	 		<p class="logo">
-              <%= image_tag "m/logo.jpg" %>
+              <%= image_tag "m/logo.jpg", width: 68 %>
             </p>
         	<p class="main_title">
-            <%= image_tag "m/title.jpg" %>
+            <%= image_tag "m/title.jpg", width: 215 %>
             </p>
             <p class="sub_title">
               <%=  image_tag "m/sub_img.jpg" %>
@@ -133,6 +132,9 @@
     <div>
       <%= simple_form_for [:m, @wall_post], html:{id:"new_mobile_wall_post"} do |f| %>
         <%= f.input :message, input_html: {class: "input_comment", id: "wall_post_text_area_input"}, label: false, required: false%>
+        <%= hidden_field_tag 'access_token' %>
+        <%= hidden_field_tag 'uid' %>
+        
       <% end %>
     </div>
     <div class="comment btn_block">

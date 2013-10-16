@@ -1,5 +1,4 @@
 Fcanvas::Application.routes.draw do
-  devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
   get "wall_posts/create"
   get 'please_like_this_page' => 'home#please_like_this_page'
   get 'canvas' => 'home#canvas'
@@ -18,5 +17,6 @@ Fcanvas::Application.routes.draw do
   end
 
   resources :wall_posts, only: [:create]
+  resources :users, only: [:create]
   root 'home#index'  
 end

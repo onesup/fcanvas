@@ -2,22 +2,22 @@ class MController < ApplicationController
   layout 'mobile'
 
   def index
-    page_id = FACEBOOK_CONFIG[:page_id]
-    @oauth = Koala::Facebook::OAuth.new(FACEBOOK_CONFIG[:app_id], FACEBOOK_CONFIG[:app_secret])
-    begin
-      @facebook_params = @oauth.get_user_info_from_cookies(cookies) unless session[:facebook_token].nil?
-    rescue
+    # page_id = FACEBOOK_CONFIG[:page_id]
+    # @oauth = Koala::Facebook::OAuth.new(FACEBOOK_CONFIG[:app_id], FACEBOOK_CONFIG[:app_secret])
+    # begin
+    #   @facebook_params = @oauth.get_user_info_from_cookies(cookies) unless session[:facebook_token].nil?
+    # rescue
       # @rest = Koala::Facebook::RestAPI.new(@facebook_params['access_token'])
       # result = @rest.get_object("me")
       # @facebook_params['user_id'] = result["id"]
-    end
-    unless @facebook_params.nil?
-      access_token = @facebook_params['access_token']
-      uid = @facebook_params['user_id']
-      user = User.create_or_find_fan!(uid, access_token)
-      session[:facebook_uid] = user.uid
-      session[:facebook_token] = user.token.access_token
-    end
+    # end
+    # unless @facebook_params.nil?
+      # access_token = @facebook_params['access_token']
+      # uid = @facebook_params['user_id']
+      # user = User.create_or_find_fan!(uid, access_token)
+      # session[:facebook_uid] = user.uid
+      # session[:facebook_token] = user.token.access_token
+    # end
     # if session[:facebook_token].nil?
 #       @facebook_params = @oauth.get_user_info_from_cookies(cookies) if session[:facebook_token].nil?
 #       if session[:facebook_token].nil?
