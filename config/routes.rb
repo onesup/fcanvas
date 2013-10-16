@@ -1,5 +1,6 @@
 Fcanvas::Application.routes.draw do
   get "wall_posts/create"
+  get 'switch' => 'home#index'
   get 'please_like_this_page' => 'home#please_like_this_page'
   get 'canvas' => 'home#canvas'
   get 'mobile' => 'm#index'
@@ -18,5 +19,5 @@ Fcanvas::Application.routes.draw do
 
   resources :wall_posts, only: [:create]
   resources :users, only: [:create]
-  root 'home#index'  
+  root 'page_tab#index'  
 end

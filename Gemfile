@@ -17,6 +17,7 @@ gem 'p3p'
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 1.4.1'
 gem 'devise', '~> 3.1.0'
+gem 'rack-iframe'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

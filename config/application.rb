@@ -16,8 +16,9 @@ module Fcanvas
     config.middleware.use Rack::Facebook::SignedRequest, app_id: FACEBOOK_CONFIG[:app_id], secret: FACEBOOK_CONFIG[:app_secret], inject_facebook: false
     config.middleware.use P3P::Middleware
     config.action_dispatch.default_headers = {
-      'X-XSS-Protection' => '1; mode=block',
-      'X-Content-Type-Options' => 'nosniff'
+      # 'X-XSS-Protection' => '1; mode=block',
+      # 'X-Content-Type-Options' => 'nosniff',
+      'X-Frame-Options' => 'ALLOW-FROM https://www.facebook.com'
     }
   end
 end

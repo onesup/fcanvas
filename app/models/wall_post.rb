@@ -8,7 +8,7 @@ class WallPost < ActiveRecord::Base
     영웅의 한마디가 기부금으로 전환되어
     기적의 어린이재활병원 건립 후원금으로 지원됩니다.
     지금 기적을 만드는 영웅이 되어주세요!
-    참여하기 > http://bit.ly/16MGuf2'
+    참여하기 > http://bit.ly/173wYGA'
   end
   
   def post
@@ -17,37 +17,27 @@ class WallPost < ActiveRecord::Base
     picture = Koala::UploadableIO.new(File.open(Rails.root.to_s+"/app/assets/images/posting_img.jpg"))
     begin 
       api.put_picture(Rails.root.to_s+"/app/assets/images/posting_img.jpg","image/jpeg", {:message => self.post_message})
-      # api.put_connections("me", "feed", {
-      #   :picture => "http://farm4.staticflickr.com/3665/10288523825_3fea0316ef_o.jpg", 
-      #   :message => self.post_message,
-      #   :type => "photo"
-      #   })
-      # api.put_wall_post(self.post_message, {"picture" => "http://farm4.staticflickr.com/3665/10288523825_3fea0316ef_o.jpg"}, "me")
-      # api.put_connections("me", "photos", {
-      #   :source => "http://farm4.staticflickr.com/3665/10288523825_3fea0316ef_o.jpg", 
-      #   :message => self.post_message
-      #   })
     rescue Koala::Facebook::AuthenticationError
       
     end
   end
   
   # def post
-  #   api = Koala::Facebook::API.new(self.user.token.access_token)
-  #   picture = Koala::UploadableIO.new(File.open(Rails.root.to_s+"/app/assets/images/posting_img.jpg"))
-  #   api.put_connections(self.user.uid, "namespace:View", {
-  #     "image[0][url]" => "http://farm4.staticflickr.com/3665/10288523825_3fea0316ef_o.jpg",
-  #     "image[0][user_generated]" => "true",
-  #     :message => "Hello, world"})
-  #     Koala::Facebook::API.new(access_token).put_connections(
-  #       uid,
-  #       "namespace:action",
-  #       "product" => "[URL_TO_PRODUCT]",
-  #       "image[0][user_generated]" => true,
-  #       "image[0][url]" => "[URL_TO_USER_GENERATED_IMAGE]",
-  #       "fb:explicitly_shared" => true,
-  #       "message" => "[DESCRIPTION]"
-  #     )
+  #   # api = Koala::Facebook::API.new(self.user.token.access_token)
+  #   # picture = Koala::UploadableIO.new(File.open(Rails.root.to_s+"/app/assets/images/posting_img.jpg"))
+  #   # api.put_connections("me", "namespace.listen", {
+  #   #   # "image[0][url]" => "http://farm4.staticflickr.com/3665/10288523825_3fea0316ef_o.jpg",
+  #   #   # "image[0][user_generated]" => "true",
+  #   #   :article => "Hello, world"})
+  #   
+  #   # Koala::Facebook::API.new(access_token).put_connections(
+  #   #   uid,
+  #   #   "namespace:action",
+  #   #   "image[0][user_generated]" => true,
+  #   #   "image[0][url]" => "[URL_TO_USER_GENERATED_IMAGE]",
+  #   #   "fb:explicitly_shared" => true,
+  #   #   "message" => "[DESCRIPTION]")
+  #   
   # end
   
   # def post
