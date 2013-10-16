@@ -128,6 +128,7 @@ color:#999999;
 padding:10px 0 20px;
 text-align:center;
 margin:10px 0;
+
 }
 #mobile #wrap #content .btn_block p {
 }
@@ -190,9 +191,13 @@ footer div p{
 	line-height:16px;
 }
 
-#comment_popup{font-size:.8em;color:#111;background-color:#feef42; -webkit-text-size-adjust:none;text-size-adjust:none;}
+#comment_popup{
+  font-size:.8em;
+  color:#111;
+  background-color:#feef42; -webkit-text-size-adjust:none;text-size-adjust:none;}
 #comment_popup #comment_header .btn_block{
 	text-align:right;
+  padding:0;
 }
 #comment_popup #comment_header .title{
 	margin:10px 0;
@@ -262,7 +267,7 @@ margin:10px 0;
 
 }
 #comment_popup{
-  padding:3%;
+  padding:1%;
 }
 
 
