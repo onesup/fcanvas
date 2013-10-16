@@ -1,6 +1,7 @@
 module ApplicationHelper
   def number_to_image_tag(number)
-    parts = number.to_s.split(".")
+    number = "%07d" % number
+    parts = number.split(".")
     parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
     numbers = parts.join
     numbers = numbers.gsub(/./){|s| '<li class="num">' + s + '</li>'}
