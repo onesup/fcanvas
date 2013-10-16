@@ -65,50 +65,53 @@ img {max-width:100%;}
 
 
 /* layout */
-body {font-size:.8em;color:#111;background-color:#feef42; -webkit-text-size-adjust:none;text-size-adjust:none;}
-footer {padding:20px 0; color:#949494; text-align:left;}
+body#mobile {font-size:.8em;color:#111;background-color:#feef42; -webkit-text-size-adjust:none;text-size-adjust:none;}
+footer#mobile {padding:20px 0; color:#949494; text-align:left;}
 body.alert{
 	background-color:#1ea1c5;
 }
 /* main */
-#main #wrap {
+#mobile #wrap {
 padding:3%;
 }
 
-#main #wrap header{
+#comment_popup{
+  padding:3%;
+}
+#mobile #wrap header{
 
 }
 
-#main #wrap header .title{
+#mobile #wrap header .title{
 padding:0 ;
 }
-#main #wrap header .title .logo{
+#mobile #wrap header .title .logo{
 	text-align:right;
 	padding-bottom:20px;
 }
-#main #wrap header .title .main_title{
+#mobile #wrap header .title .main_title{
 	padding-bottom:10px;
 	text-align:center;
 }
-#main #wrap header .title .sub_title{
+#mobile #wrap header .title .sub_title{
 	padding-bottom:10px;
 	text-align:center;
 }
-#main #wrap #content {
+#mobile #wrap #content {
 color:#999999;
 }
 
-#main #wrap #content .count {
+#mobile #wrap #content .count {
 	font-weight:bold;
 	color:#1ea1c5;
 	padding:10px 0;
 	margin-bottom:10px;
 }
-#main #wrap #content .count ul{
+#mobile #wrap #content .count ul{
 	width:300px;
 	margin:0 auto;
 }
-#main #wrap #content .count ul li{
+#mobile #wrap #content .count ul li{
 	float:left;
 	display:block;
 	color:#1ea1c5;
@@ -118,38 +121,46 @@ color:#999999;
 	padding:5px 0 3px;
 	line-height:25px;
 }
-#main #wrap #content .count ul li.num{
+#mobile #wrap #content .count ul li.num{
 	background:#fff;
 	width:31px;
 }
 
-#main #wrap #content .btn_block {
+#mobile #wrap #content .btn_block {
 padding:10px 0 20px;
 text-align:center;
 margin:10px 0;
 }
-#main #wrap #content .btn_block p {
+#mobile #wrap #content .btn_block p {
 }
-#main #wrap #content .btn_block p a{
+#mobile #wrap #content .btn_block p input{
 	display:block;
 	background:#1ea1c5;
 	padding:10px 0;
+  width:100%;
+
+}
+#mobile #wrap #content .btn_block p a{
+	display:block;
+	background:#1ea1c5;
+	padding:10px 0;
+  width:100%;
 
 }
 
-#main #wrap #content .text_block{
+#mobile #wrap #content .text_block{
 	padding:10px 10px 25px;
 	color:#000;
 	font-size:17px;
 	line-height:24px;
 }
 
-#main #wrap #content .sub_btn_block div{
+#mobile #wrap #content .sub_btn_block div{
 	display:block;
 	float:left;
 	width:50%;
 }
-#main #wrap #content .sub_btn_block a{
+#mobile #wrap #content .sub_btn_block a{
 	display:block;
 	padding:20px 0;
 	text-align:center;
@@ -157,11 +168,11 @@ margin:10px 0;
 	border:3px solid #1ea1c5;
 }
 
-#main #wrap #content .sub_btn_block div.first a{
+#mobile #wrap #content .sub_btn_block div.first a{
 	border-right:none;
 }
 
-#main #wrap #content .bottom_txt {
+#mobile #wrap #content .bottom_txt {
 border:1px solid #404040;
 border-right:none;
 border-left:none;
@@ -181,14 +192,14 @@ footer div p{
 	line-height:16px;
 }
 
-
-#wrap #comment_header .btn_block{
+#comment_popup{font-size:.8em;color:#111;background-color:#feef42; -webkit-text-size-adjust:none;text-size-adjust:none;}
+#comment_popup #comment_header .btn_block{
 	text-align:right;
 }
-#wrap #comment_header .title{
+#comment_popup #comment_header .title{
 	margin:10px 0;
 }
-#main #wrap #content .input{
+#comment_popup #content .input{
 	width:100%;
 	height:70px;
 	font-size:14px;
@@ -200,16 +211,56 @@ footer div p{
 	border-radius: 0;
 
 }
-#main #wrap #content .comment.btn_block{
+#comment_popup #content .comment.btn_block{
 	margin:0;
 }
-#main #wrap #content .btn_block.alert p a{
+#comment_popup #content .btn_block.alert p a{
 	display:block;
 	background:#feef42;
 	padding:10px 0;
 
 }
-#wrap #comment_header .title_alert{
+#comment_popup #comment_header .title_alert{
 	margin:10px 0;
 	text-align:center;
 }
+
+#wall_post_text_area_input{
+	width:100%;
+	height:70px;
+	font-size:14px;
+	line-height:18px;
+	color:#666;
+	border:none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	border-radius: 0;
+
+}
+#comment_popup #content .count ul li.num{
+	background:#fff;
+	width:31px;
+}
+
+#comment_popup #content .btn_block {
+padding:10px 0 20px;
+text-align:center;
+margin:10px 0;
+}
+#comment_popup #content .btn_block p {
+}
+#comment_popup #content .btn_block p input{
+	display:block;
+	background:#1ea1c5;
+	padding:10px 0;
+  width:100%;
+
+}
+#comment_popup #content .btn_block p a{
+	display:block;
+	background:#1ea1c5;
+	padding:10px 0;
+  width:100%;
+
+}
+#comment_popup{ display:none; }

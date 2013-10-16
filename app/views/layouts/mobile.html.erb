@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#">
-<head>
-  <title>Fcanvas</title>
-  <%= stylesheet_link_tag    "mobile", media: "all", "data-turbolinks-track" => true %>
+<head prefix="og: http://ogp.me/ns#">
+  <title>Miracle Hospital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body id="main">
+<body id="mobile">
   <div id="fb-root"></div>
   <script>
+  ;(function($) {
+      $(function() {
+          $('#comment_open').bind('click', function(e) {
+            e.preventDefault();
+            $('#comment_popup').bPopup({
+              follow: [false, false], //x, y
+              position: ['auto', 450] //x, y
+            });
+          });
+
+          $(document).ready(function(){
+            <% if flash[:popup] == "complete" %>
+              $('#comment_complete_popup').bPopup({
+                follow: [false, false], //x, y
+                position: [200, 850] //x, y
+              });
+            <% elsif flash[:popup] == "invalid" %>
+              $('#comment_invalid_popup').bPopup({
+                follow: [false, false], //x, y
+                position: [200, 850] //x, y
+              });
+            <% end %>
+          });
+
+      });
+  })(jQuery);
 window.fbAsyncInit = function() {
 // init the FB JS SDK
   FB.init({

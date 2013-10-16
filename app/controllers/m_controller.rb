@@ -1,21 +1,22 @@
 class MController < ApplicationController
   layout 'mobile'
-  def index
-    session[:facebook_uid] ||= request.env['facebook.params']["user_id"]
-    unless request.env['facebook.params'].nil?
-      @result = require_like
-      if @result == []
-        redirect_to mobile_gate_path
-      end    
-      unless session[:facebook_token] == request.env['facebook.params']["oauth_token"]
-        session[:facebook_token] = request.env['facebook.params']["oauth_token"]
-      end
-    end
 
+  def index
+    # session[:facebook_uid] ||= request.env['facebook.params']["user_id"]
+    # unless request.env['facebook.params'].nil?
+    #   @result = require_like
+    #   if @result == []
+    #     redirect_to mobile_gate_path
+    #   end    
+    #   unless session[:facebook_token] == request.env['facebook.params']["oauth_token"]
+    #     session[:facebook_token] = request.env['facebook.params']["oauth_token"]
+    #   end
+    # end
+    @wall_post = WallPost.new
+    @wall_posts = WallPost.limit(5).order('created_at DESC')
   end
   
   def fan_gate
-    
     @result = require_like
     unless @result == []
       redirect_to mobile_path
