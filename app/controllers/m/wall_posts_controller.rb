@@ -7,10 +7,11 @@ class M::WallPostsController < ApplicationController
       wall_post = user.wall_posts.new(wall_post_params)
       last_post_time = user.wall_posts.empty? ? (Time.now - 7.day) : user.wall_posts.last.created_at
       respond_to do |format|
-        if (Time.now - last_post_time) > 20.second
-          flash[:popup] = "timelimit"
-          format.html { redirect_to mobile_path}
-        elsif wall_post.save
+        # if (Time.now - last_post_time) > 20.second
+          # flash[:popup] = "timelimit"
+          # format.html { redirect_to mobile_path}
+        # elsif wall_post.save
+        if wall_post.save
           wall_post.post
           flash[:popup] = "complete"
           format.html { redirect_to mobile_path}
