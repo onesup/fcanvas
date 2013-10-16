@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    reset_session
     @user_agent = UserAgent.parse(request.user_agent)
     if @user_agent.mobile?
       flash[:facebook_params] = request.env['facebook.params']
