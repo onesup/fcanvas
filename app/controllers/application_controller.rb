@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   # protect_from_forgery with: :exception
   
+  # before_filter :parse_facebook_cookies
+  # def parse_facebook_cookies
+  #   @oauth = Koala::Facebook::OAuth.new(FACEBOOK_CONFIG[:app_id], FACEBOOK_CONFIG[:app_secret])
+  #   @facebook_params = @oauth.get_user_info_from_cookies(cookies)
+  # end
+  
   def authorized_user!
     unless user_logged_in?
       redirect_to root_path

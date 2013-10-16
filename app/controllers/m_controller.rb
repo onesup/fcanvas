@@ -7,10 +7,11 @@ class MController < ApplicationController
     begin
       @facebook_params = @oauth.get_user_info_from_cookies(cookies)
     rescue
-      @facebook_params['access_token'] = @oauth.exchange_access_token_info(session[:facebook_token])
-      @rest = Koala::Facebook::RestAPI.new(@facebook_params['access_token'])
-      result = @rest.get_object("me")
-      @facebook_params['user_id'] = result["id"]
+      @facebook_params = @oauth.exchange_access_token_info(session[:facebook_token])
+      puts @facebook_params
+      # @rest = Koala::Facebook::RestAPI.new(@facebook_params['access_token'])
+      # result = @rest.get_object("me")
+      # @facebook_params['user_id'] = result["id"]
     end
     unless @facebook_params.nil?
       access_token = @facebook_params['access_token']
