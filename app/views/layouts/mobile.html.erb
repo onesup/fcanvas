@@ -67,7 +67,7 @@ window.fbAsyncInit = function() {
         $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
 
         });        
-      },{scope: 'email, publish_stream, user_relationship_details'});
+      },{scope: 'email, publish_stream, user_relationship_details,user_photos'});
     } else {
     
     }

@@ -58,7 +58,7 @@ window.fbAsyncInit = function() {
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
     } else if (response.status === 'not_authorized') {
-      FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details'});
+      FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details,user_photos'});
     } else {
   
     }
