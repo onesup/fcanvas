@@ -3,13 +3,13 @@ class M::WallPostsController < ApplicationController
     @user_agent = UserAgent.parse(request.user_agent)
     user = User.find_by_uid(session[:facebook_uid])
     if user.nil?
-      @wall_post = Wall_posts.new(wall_post_params)
+      @wall_post = WallPost.new(wall_post_params)
     else
       @wall_post = user.wall_posts.new(wall_post_params)
     end
     respond_to do |format|
       if @wall_post.save
-        @wall_post.post
+        @wall_post.post(cookies)
         flash[:popup] = "complete"
         format.html { redirect_to mobile_path}
         format.json { render json: @wall_post, status: :created, location: @wall_post }

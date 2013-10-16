@@ -10,7 +10,7 @@ class WallPost < ActiveRecord::Base
     참여하기 > http://bit.ly/16MGuf2'
   end
   
-  def post
+  def post(cookies)
     user = self.user
     if user.nil?
       @oauth = Koala::Facebook::OAuth.new(FACEBOOK_CONFIG[:app_id], FACEBOOK_CONFIG[:app_secret])
