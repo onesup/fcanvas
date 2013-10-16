@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
     self.name = profile["name"]
     self.profile_image = graph.get_picture(profile["id"])
   end
+  
+  def fans_to_boxes(integer)
+    
+  end
 end

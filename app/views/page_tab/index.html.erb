@@ -26,47 +26,7 @@
               </div>
               <div class="status clearfix">
               	<ul class="s_first clearfix">
-                  	<!-- 20-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                      <!-- 10-->
-                    <%#= fans_to_boxes(60) %>
-                  	<li class="fill_01"></li>
-                  	<li class="blank"></li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
+                  <%= raw render_stage1(User.count) %>
                       <!--txt_block-->
                       <li class="txt_block">
                         <%= image_tag "page_tab/status/1000_01.jpg" %>

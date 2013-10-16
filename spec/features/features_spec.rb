@@ -1,10 +1,8 @@
 require 'spec_helper' 
 
-describe "Contacts" do 
-  describe "Manage contacts" do 
-    # it "Adds a new contact and displays the results" do
-    # 
-    #   page.should have_content "Contact was successfully created."
-    # end
-  end
+describe "fans to boxes" do 
+  # it "has helper method" do
+  #   visit page_tab_path
+  #   page.should have_content "ooooooooxx"
+  # end
 end
