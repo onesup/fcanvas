@@ -23,5 +23,4 @@ class WallPost < ActiveRecord::Base
     # end
     # api.put_connections("me", "namespace:action", :object => "https://apps.facebook.com/canvas_test_onesup/")
   end
-  
 end
