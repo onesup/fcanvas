@@ -2,7 +2,11 @@ class M::WallPostsController < ApplicationController
   def create
     @user_agent = UserAgent.parse(request.user_agent)
     user = User.find_by_uid(session[:facebook_uid])
-    @wall_post = user.wall_posts.new(wall_post_params)    
+    if user.nil?
+      @wall_post = Wall_posts.new(wall_post_params)
+    else
+      @wall_post = user.wall_posts.new(wall_post_params)
+    end
     respond_to do |format|
       if @wall_post.save
         @wall_post.post

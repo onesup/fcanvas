@@ -5,7 +5,7 @@ class MController < ApplicationController
     page_id = FACEBOOK_CONFIG[:page_id]
     @oauth = Koala::Facebook::OAuth.new(FACEBOOK_CONFIG[:app_id], FACEBOOK_CONFIG[:app_secret])
     begin
-      @facebook_params = @oauth.get_user_info_from_cookies(cookies)
+      @facebook_params = @oauth.get_user_info_from_cookies(cookies) unless session[:facebook_token].nil?
     rescue
       @facebook_params = @oauth.exchange_access_token_info(session[:facebook_token])
       puts @facebook_params

@@ -7,13 +7,18 @@ class WallPost < ActiveRecord::Base
     영웅의 한마디가 기부금으로 전환되어
     기적의 어린이재활병원 건립 후원금으로 지원됩니다.
     지금 기적을 만드는 영웅이 되어주세요!
-    참여하기 > http://somebody.com'
+    참여하기 > http://bit.ly/16MGuf2'
   end
   
   def post
     user = self.user
-    
-    @oauth_token = user.token.access_token
+    if user.nil?
+      @oauth = Koala::Facebook::OAuth.new(FACEBOOK_CONFIG[:app_id], FACEBOOK_CONFIG[:app_secret])
+      @facebook_params = @oauth.get_user_info_from_cookies(cookies)
+      @oauth_token = @facebook_params['access_token']
+    else
+      @oauth_token = user.token.access_token
+    end
     api = Koala::Facebook::API.new(@oauth_token)
     picture = Koala::UploadableIO.new(File.open(Rails.root.to_s+"/app/assets/images/posting_img.jpg"))
     # begin 
