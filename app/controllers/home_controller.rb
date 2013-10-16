@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @user_agent = UserAgent.parse(request.user_agent)
     if @user_agent.mobile?
       flash[:facebook_params] = request.env['facebook.params']
-      redirect_to("http://apps.facebook.com/hero_for_children")
+      redirect_to mobile_path
     else
       flash[:facebook_params] = request.env['facebook.params']
       redirect_to page_tab_path

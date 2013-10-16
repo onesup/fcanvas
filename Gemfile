@@ -14,6 +14,9 @@ gem 'koala', '>= 1.7.0rc1'
 gem 'simple_form', '>= 3.0.0'
 gem 'useragent', '>= 0.2.1'
 gem 'p3p'
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 1.4.1'
+gem 'devise', '~> 3.1.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
