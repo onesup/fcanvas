@@ -27,12 +27,12 @@
             <% if flash[:popup] == "complete" %>
               $('#mobile_comment_complete_popup').bPopup({
                 follow: [false, false], //x, y
-                position: ['auto', 450] //x, y
+                position: ['auto', 150] //x, y
               });
             <% elsif flash[:popup] == "invalid" %>
               $('#mobile_comment_invalid_popup').bPopup({
                 follow: [false, false], //x, y
-                position: ['auto', 450] //x, y
+                position: ['auto', 150] //x, y
               });
             <% end %>
           });
