@@ -22,7 +22,7 @@
               e.preventDefault();
               $('#comment_popup').bPopup({
                 follow: [false, false], //x, y
-                position: [101, 850] //x, y
+                position: [101, 1080] //x, y
               });
           });
 
@@ -30,12 +30,12 @@
             <% if flash[:popup] == "complete" %>
               $('#comment_complete_popup').bPopup({
                 follow: [false, false], //x, y
-                position: [200, 850] //x, y
+                position: [200, 1080] //x, y
               });
             <% elsif flash[:popup] == "invalid" %>
               $('#comment_invalid_popup').bPopup({
                 follow: [false, false], //x, y
-                position: [200, 850] //x, y
+                position: [200, 1080] //x, y
               });
             <% end %>
           });
