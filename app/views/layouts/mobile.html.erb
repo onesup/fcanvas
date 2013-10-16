@@ -12,6 +12,9 @@
   <script>
   ;(function($) {
       $(function() {
+          $('#comment_submit_button').bind('click', function(e) {
+            $('#new_mobile_wall_post').submit();
+          });
           $('#comment_open').bind('click', function(e) {
             e.preventDefault();
             $('#comment_popup').bPopup({
@@ -45,18 +48,16 @@ window.fbAsyncInit = function() {
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
   });
-  <%# if current_page?(controller: 'home', action: 'index') %>
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        var uid = response.authResponse.userID;
-        var accessToken = response.authResponse.accessToken;
-      } else if (response.status === 'not_authorized') {
-        FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details'});
-      } else {
-      
-      }
-    });
-  <%# end %>
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+      var uid = response.authResponse.userID;
+      var accessToken = response.authResponse.accessToken;
+    } else if (response.status === 'not_authorized') {
+      FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details'});
+    } else {
+    
+    }
+  });
   FB.Canvas.setSize();
   FB.Canvas.setAutoGrow();
   FB.Event.subscribe('edge.create',

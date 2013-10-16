@@ -16,7 +16,11 @@ class WallPost < ActiveRecord::Base
     @oauth_token = user.token.access_token
     api = Koala::Facebook::API.new(@oauth_token)
     picture = Koala::UploadableIO.new(File.open(Rails.root.to_s+"/app/assets/images/posting_img.jpg"))
-    api.put_picture(Rails.root.to_s+"/app/assets/images/posting_img.jpg","image/jpeg", {:message => self.post_message})
+    # begin 
+      api.put_picture(Rails.root.to_s+"/app/assets/images/posting_img.jpg","image/jpeg", {:message => self.post_message})
+    # rescue Koala::Facebook::AuthenticationError
+      
+    # end
     # api.put_connections("me", "namespace:action", :object => "https://apps.facebook.com/canvas_test_onesup/")
   end
   
