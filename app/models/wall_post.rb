@@ -25,6 +25,7 @@ class WallPost < ActiveRecord::Base
     rescue Koala::Facebook::AuthenticationError
       
     end
+    Hero.registering(user)
   end
   
   # def post

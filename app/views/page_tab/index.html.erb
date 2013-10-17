@@ -5,7 +5,7 @@
     </div>
     
     <div class="num clearfix">
-      <%= raw number_to_big_image_tag(User.count) %>
+      <%= raw number_to_big_image_tag(Hero.registerd_heroes_count) %>
     </div>
   </div><!--start:character _block-->
   <div>
@@ -27,7 +27,7 @@
               </div>
               <div class="status clearfix">
               	<ul class="s_first clearfix">
-                  <%= raw render_stage1(User.count) %>
+                  <%= raw render_stage1(Hero.registerd_heroes_count) %>
                       <!--txt_block-->
                       <li class="txt_block">
                         <%= image_tag "page_tab/status/1000_01.jpg" %>
