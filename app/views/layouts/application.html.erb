@@ -27,6 +27,11 @@
           });
 
           $(document).ready(function(){
+              return $("#comments_box").infinitescroll({
+                navSelector: "nav.pagination",
+                nextSelector: "nav.pagination a[rel=next]",
+                itemSelector: "#wall_posts"
+              });
             <% if flash[:popup] == "complete" %>
               $('#comment_complete_popup').bPopup({
                 follow: [false, false], //x, y

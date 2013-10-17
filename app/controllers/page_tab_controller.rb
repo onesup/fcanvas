@@ -3,12 +3,16 @@ class PageTabController < ApplicationController
     flash[:facebook_params] = request.env['facebook.params']
     require_like unless flash[:facebook_params].nil?
     @wall_post = WallPost.new
-    @wall_posts = WallPost.limit(5).order('created_at DESC')
+    @wall_posts = WallPost.order('created_at DESC').page(params[:page]).per(5)
     
   end
 
   def fan_gate
     
+  end
+  
+  def test
+    @wall_posts = WallPost.order('created_at desc').page(params[:page])
   end
   
   private

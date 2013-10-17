@@ -286,3 +286,16 @@ padding:0;
 #comment_popup { display:none; }
 #comment_complete_popup { display:none; }
 #comment_invalid_popup { display:none; }
+div.paginate{
+  text-align: center;
+  nav.pagination{
+    margin-top:10px;
+  }
+}
+div#comments_box{
+  padding-left: 40px;
+  background: #fdd;
+  width: 500px;
+  height: 200px;
+  overflow-y: scroll;
+}

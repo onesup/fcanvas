@@ -16,4 +16,5 @@
 //= require jquery-ui
 //= require jquery.bpopup.min
 //= require jquery.validate
+//= require jquery.infinitescroll.js
 //= require_tree .

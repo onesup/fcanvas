@@ -216,6 +216,9 @@
         </div>
       </div><!--end:comment_one-->
     <% end %>
+    <div class="paginate">
+      <%= paginate @wall_posts %>
+    </div>
   </div><!--end:comment list-->
   <div class="txt_bottom">
     <%= image_tag "page_tab/txt_bottom.jpg", border: "0", usemap: "#map" %>

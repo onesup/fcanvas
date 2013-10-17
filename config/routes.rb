@@ -1,5 +1,7 @@
 Fcanvas::Application.routes.draw do
   get "wall_posts/create"
+  get 'test' => 'page_tab#test'
+  get 'children' => 'home#index'
   get 'switch' => 'home#index'
   get 'please_like_this_page' => 'home#please_like_this_page'
   get 'canvas' => 'home#canvas'
