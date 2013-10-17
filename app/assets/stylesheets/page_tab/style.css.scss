@@ -290,6 +290,9 @@ div.paginate{
   text-align: center;
   nav.pagination{
     margin-top:10px;
+    span.current{
+      font-weight: 800;
+    }
   }
 }
 div#comments_box{
