@@ -69,15 +69,7 @@ window.fbAsyncInit = function() {
 
       });
     } else if (response.status === 'not_authorized') {
-      FB.login(function(response){
-
-        var uid = response.authResponse.userID;
-        var accessToken = response.authResponse.accessToken;
-        $("#uid").val(uid);
-        $("#access_token").val(accessToken);
-        $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
-
-      });   ,{scope: 'email, publish_stream, user_relationship_details,user_photos,publish_actions'});
+      FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details,user_photos'});
     } else {
   
     }
