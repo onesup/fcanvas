@@ -438,22 +438,19 @@ div.alert{
   .like_page{
    text-align:center;
    margin-padding: 20px;
-   div.btn_lke{ 
-     transform: scale(2);                 
-     -moz-transform: scale(2);        /* firefox 용 */ 
-     -webkit-transform: scale(2);     /* webkit 브라우저 */ 
-     -o-transform: scale(2);            /* opera용 */ 
-     -ms-transform: scale(2);          /* IE용 */ 
-   }
    .hero_image{
      padding-top: 20px;
    }
   }
 }
-#moblie_need_lke #comment_header .title_like{
- margin:20px 0 0;
- text-align:center;
-}  
+
+div#mobile_need_like div.btn_like{
+  transform: scale(2);                 
+  -moz-transform: scale(2);        /* firefox 용 */ 
+  -webkit-transform: scale(2);     /* webkit 브라우저 */ 
+  -o-transform: scale(2);            /* opera용 */ 
+  -ms-transform: scale(2);          /* IE용 */ 
+}
  
 
 #mobile_need_like{ display:none; }

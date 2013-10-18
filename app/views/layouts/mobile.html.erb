@@ -12,6 +12,11 @@
   <script>
   ;(function($) {
       $(function() {
+        $('#mobile_need_like').bPopup({
+          follow: [false, false], //x, y
+          position: ['auto', 150] //x, y
+        });
+        
 
           $('#comment_open').bind('click', function(e) {
             e.preventDefault();
