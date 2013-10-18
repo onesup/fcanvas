@@ -5,8 +5,7 @@ class Hero < ActiveRecord::Base
   belongs_to :wall_post
   
   def self.registerd_heroes_count
-    # Hero.count == 0 ?  0 : Hero.last.total
-    WallPost.count
+    Hero.count == 0 ?  0 : Hero.last.total
   end
   def self.registering(user)
     total_heroes = Hero.count == 0 ?  0 : Hero.last.total
