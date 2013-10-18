@@ -428,7 +428,19 @@ margin:10px 0;
 div.alert{
 	background-color:#1ea1c5;
 }
-
+footer#mobile{
+  ul.contents{
+    li{
+      line-height: 15px;
+      text-indent: -12px;
+      padding-left: 12px;
+      margin-top: 2px;
+    }
+    li.external{
+      padding-left: 20px;
+    }
+  }
+}
 #mobile_comment_complete_popup{ display:none; }
 #mobile_comment_invalid_popup{ display:none; }
 #comment_popup{ display:none; }
