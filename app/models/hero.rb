@@ -4,11 +4,11 @@ class Hero < ActiveRecord::Base
   belongs_to :user
   belongs_to :wall_post
   
-  def self.registerd_heroes_count
-    result = 0
-    result = Hero.last.heroes_total unless Hero.count == 0
-    result
-  end
+  # def self.registerd_heroes_count
+  #   result = 0
+  #   result = Hero.last.heroes_total unless Hero.count == 0
+  #   result
+  # end
   
   def self.registerd_heroes_count
     result = 0
