@@ -24,6 +24,12 @@
           });
 
           $(document).ready(function(){
+            window.setTimeout(checkLogStatus, 1000);
+              function checkLogStatus(){
+                      alert("check");
+                      // fetch the status on load      
+                      FB.getLoginStatus(handleSessionResponse);
+              }
             <% if flash[:popup] == "complete" %>
               $('#mobile_comment_complete_popup').bPopup({
                 follow: [false, false], //x, y
@@ -42,7 +48,7 @@
               });
             <% end %>
           });
-
+          
       });
   })(jQuery);
 window.fbAsyncInit = function() {
