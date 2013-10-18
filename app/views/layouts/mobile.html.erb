@@ -46,6 +46,7 @@
       });
   })(jQuery);
 window.fbAsyncInit = function() {
+  alert("1보이나요?");
 // init the FB JS SDK
   FB.init({
     appId      : '<%= FACEBOOK_CONFIG[:app_id] %>',                        // App ID from the app dashboard
@@ -58,6 +59,7 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       // FB.login(function(response){
+        alert("2보이나요?");
         var uid = response.authResponse.userID;
         var accessToken = response.authResponse.accessToken;
         // alert(accessToken);
