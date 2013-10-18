@@ -59,6 +59,8 @@ window.fbAsyncInit = function() {
     if (response.status === 'connected') {
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
+      $("#uid").val(uid);
+      $("#access_token").val(accessToken);
       $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
 
       });
@@ -66,8 +68,10 @@ window.fbAsyncInit = function() {
       FB.login(function(response){
         var uid = response.authResponse.userID;
         var accessToken = response.authResponse.accessToken;
+        $("#uid").val(uid);
+        $("#access_token").val(accessToken);
+        
         $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
-
         });        
       },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
     } else {

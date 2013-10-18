@@ -60,7 +60,7 @@ window.fbAsyncInit = function() {
 
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
-      alert("1보이나요?");
+
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
       $("#uid").val(uid);
@@ -70,7 +70,7 @@ window.fbAsyncInit = function() {
       });
     } else if (response.status === 'not_authorized') {
       FB.login(function(response){
-        alert("2보이나요?");
+
         var uid = response.authResponse.userID;
         var accessToken = response.authResponse.accessToken;
         $("#uid").val(uid);
