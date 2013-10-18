@@ -1,7 +1,12 @@
 class M::WallPostsController < ApplicationController
   def create
-    uid = params[:uid]
-    access_token = params[:access_token]
+    if params[:uid] == ""
+      uid = session[:facebook_uid]
+      access_token = session[:facebook_token]
+    else
+      uid = params[:uid]
+      access_token = params[:access_token]
+    end
     user = User.find_by_uid(uid)
     wall_post = user.wall_posts.new(wall_post_params)
     respond_to do |format|
