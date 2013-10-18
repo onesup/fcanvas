@@ -70,7 +70,6 @@ window.fbAsyncInit = function() {
         var accessToken = response.authResponse.accessToken;
         $("#uid").val(uid);
         $("#access_token").val(accessToken);
-        
         $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
         });        
       },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
