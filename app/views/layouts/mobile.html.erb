@@ -11,7 +11,10 @@
   <div id="fb-root"></div>
   <script>
   ;(function($) {
-      $(function() {        
+      $(function() {    
+        $('#comment_submit_button').bind('click', function(e) {
+          $('#new_mobile_wall_post').submit();
+        });    
 
           $('#comment_open').bind('click', function(e) {
             e.preventDefault();
@@ -22,6 +25,24 @@
           });
 
           $(document).ready(function(){
+            
+            <% if flash[:popup] == "complete" %>
+              $('#mobile_comment_complete_popup').bPopup({
+                follow: [false, false], //x, y
+                position: ['auto', 150] //x, y
+              });
+            <% elsif flash[:popup] == "invalid" %>
+              $('#mobile_comment_invalid_popup').bPopup({
+                follow: [false, false], //x, y
+                position: ['auto', 150] //x, y
+              });
+            <% elsif flash[:popup] == "timelimit" %>
+              alert("응원은 20초에 한번만 가능합니다.");
+              $('#mobile_comment_invalid_popup').bPopup({
+                follow: [false, false], //x, y
+                position: ['auto', 150] //x, y
+              });
+            <% end %>
                         
             window.setTimeout(checkLogStatus, 1000);
               function checkLogStatus(){
@@ -50,37 +71,13 @@
                   } else {
                     $('#mobile_need_like').bPopup({
                       follow: [false, false], //x, y
-                      position: ['auto', 150] //x, y
+                      position: ['auto', 100] //x, y
                     });
-                    // FB.login(function(response){
-                    //   var uid = response.authResponse.userID;
-                    //   var accessToken = response.authResponse.accessToken;
-                    //   $("#uid").val(uid);
-                    //   $("#access_token").val(accessToken);
-                    //   $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
-                    //   });        
-                    // },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
                   }
                 });
                       
               }
-            <% if flash[:popup] == "complete" %>
-              $('#mobile_comment_complete_popup').bPopup({
-                follow: [false, false], //x, y
-                position: ['auto', 150] //x, y
-              });
-            <% elsif flash[:popup] == "invalid" %>
-              $('#mobile_comment_invalid_popup').bPopup({
-                follow: [false, false], //x, y
-                position: ['auto', 150] //x, y
-              });
-            <% elsif flash[:popup] == "timelimit" %>
-              alert("응원은 20초에 한번만 가능합니다.");
-              $('#mobile_comment_invalid_popup').bPopup({
-                follow: [false, false], //x, y
-                position: ['auto', 150] //x, y
-              });
-            <% end %>
+            
           });
           
       });
@@ -124,7 +121,7 @@ window.fbAsyncInit = function() {
 <fb:like href="https://www.facebook.com/pages/ThchStartup/1377173915843709" colorscheme="light" layout="button_count" action="like" show_faces="false" send="false"></fb:like>
 
 
-
+<%= flash[:popup] %>
 <%= yield %>
 
 
