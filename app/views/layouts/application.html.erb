@@ -60,6 +60,7 @@ window.fbAsyncInit = function() {
 
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
+      alert("1보이나요?");
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
       $("#uid").val(uid);
@@ -69,13 +70,14 @@ window.fbAsyncInit = function() {
       });
     } else if (response.status === 'not_authorized') {
       FB.login(function(response){
-              var uid = response.authResponse.userID;
-              var accessToken = response.authResponse.accessToken;
-              $("#uid").val(uid);
-              $("#access_token").val(accessToken);
-              $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
+        alert("2보이나요?");
+        var uid = response.authResponse.userID;
+        var accessToken = response.authResponse.accessToken;
+        $("#uid").val(uid);
+        $("#access_token").val(accessToken);
+        $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
 
-              });   ,{scope: 'email, publish_stream, user_relationship_details,user_photos,publish_actions'});
+      });   ,{scope: 'email, publish_stream, user_relationship_details,user_photos,publish_actions'});
     } else {
   
     }
