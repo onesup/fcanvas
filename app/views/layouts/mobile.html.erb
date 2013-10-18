@@ -26,9 +26,34 @@
           $(document).ready(function(){
             window.setTimeout(checkLogStatus, 1000);
               function checkLogStatus(){
-                      alert("check");
-                      // fetch the status on load      
-                      FB.getLoginStatus(handleSessionResponse);
+
+                FB.getLoginStatus(function(response) {
+                  if (response.status === 'connected') {
+                    // FB.login(function(response){
+                      var uid = response.authResponse.userID;
+                      var accessToken = response.authResponse.accessToken;
+                      // alert(accessToken);
+                      $("#uid").val(uid);
+                      $("#access_token").val(accessToken);
+                      alert($("#uid"));
+                      $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
+
+                    });
+                  // },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
+                  } else if (response.status === 'not_authorized') {
+                    FB.login(function(response){
+                      var uid = response.authResponse.userID;
+                      var accessToken = response.authResponse.accessToken;
+                      $("#uid").val(uid);
+                      $("#access_token").val(accessToken);
+                      $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
+                      });        
+                    },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
+                  } else {
+  
+                  }
+                });
+                      
               }
             <% if flash[:popup] == "complete" %>
               $('#mobile_comment_complete_popup').bPopup({
@@ -75,32 +100,7 @@ window.fbAsyncInit = function() {
   
 };
 
-FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-    // FB.login(function(response){
-      var uid = response.authResponse.userID;
-      var accessToken = response.authResponse.accessToken;
-      // alert(accessToken);
-      $("#uid").val(uid);
-      $("#access_token").val(accessToken);
-      alert($("#uid"));
-      $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
 
-    });
-  // },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
-  } else if (response.status === 'not_authorized') {
-    FB.login(function(response){
-      var uid = response.authResponse.userID;
-      var accessToken = response.authResponse.accessToken;
-      $("#uid").val(uid);
-      $("#access_token").val(accessToken);
-      $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
-      });        
-    },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
-  } else {
-  
-  }
-});
 
 
 (function(d, s, id){
