@@ -49,7 +49,7 @@
                       });        
                     },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
                   } else {
-                    alert("잘못된 접근입니다.");
+                    alert("좋아요를 눌러주세요 ^^");
                     FB.login(function(response){
                       var uid = response.authResponse.userID;
                       var accessToken = response.authResponse.accessToken;
