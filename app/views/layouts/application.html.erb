@@ -27,7 +27,7 @@
           });
 
           $(document).ready(function(){
-              return $("#comments_box").infinitescroll({
+              $("#comments_box").infinitescroll({
                 navSelector: "nav.pagination",
                 nextSelector: "nav.pagination a[rel=next]",
                 itemSelector: "#wall_posts"
@@ -97,6 +97,7 @@ window.fbAsyncInit = function() {
 }(document));
 
 </script>
+<%= flash[:popup] %>
 <%= yield %>
 
 
