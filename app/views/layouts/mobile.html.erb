@@ -58,7 +58,6 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       // FB.login(function(response){
-        alert("2보이나요?");
         var uid = response.authResponse.userID;
         var accessToken = response.authResponse.accessToken;
         // alert(accessToken);
