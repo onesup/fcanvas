@@ -428,6 +428,34 @@ margin:10px 0;
 div.alert{
 	background-color:#1ea1c5;
 }
+
+#mobile_need_like{
+  #comment_header{
+    padding-bottom: 20px;
+  }
+  padding:30px;
+  background-color:#feef42; -webkit-text-size-adjust:none;text-size-adjust:none;
+  .like_page{
+   text-align:center;
+   margin-padding: 20px;
+   div.btn_lke{ 
+     transform: scale(2);                 
+     -moz-transform: scale(2);        /* firefox 용 */ 
+     -webkit-transform: scale(2);     /* webkit 브라우저 */ 
+     -o-transform: scale(2);            /* opera용 */ 
+     -ms-transform: scale(2);          /* IE용 */ 
+   }
+   .hero_image{
+     padding-top: 20px;
+   }
+  }
+}
+#moblie_need_lke #comment_header .title_like{
+ margin:20px 0 0;
+ text-align:center;
+}  
+ 
+
 #mobile_need_like{ display:none; }
 #mobile_comment_complete_popup{ display:none; }
 #mobile_comment_invalid_popup{ display:none; }

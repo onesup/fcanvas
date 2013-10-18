@@ -12,9 +12,7 @@
   <script>
   ;(function($) {
       $(function() {
-          $('#comment_submit_button').bind('click', function(e) {
-            $('#new_mobile_wall_post').submit();
-          });
+
           $('#comment_open').bind('click', function(e) {
             e.preventDefault();
             $('#comment_popup').bPopup({
@@ -24,6 +22,7 @@
           });
 
           $(document).ready(function(){
+                        
             window.setTimeout(checkLogStatus, 1000);
               function checkLogStatus(){
 
@@ -53,14 +52,14 @@
                       follow: [false, false], //x, y
                       position: ['auto', 150] //x, y
                     });
-                    FB.login(function(response){
-                      var uid = response.authResponse.userID;
-                      var accessToken = response.authResponse.accessToken;
-                      $("#uid").val(uid);
-                      $("#access_token").val(accessToken);
-                      $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
-                      });        
-                    },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
+                    // FB.login(function(response){
+                    //   var uid = response.authResponse.userID;
+                    //   var accessToken = response.authResponse.accessToken;
+                    //   $("#uid").val(uid);
+                    //   $("#access_token").val(accessToken);
+                    //   $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
+                    //   });        
+                    // },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
                   }
                 });
                       
