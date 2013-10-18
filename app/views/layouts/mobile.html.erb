@@ -56,22 +56,22 @@ window.fbAsyncInit = function() {
     xfbml      : true  // parse XFBML
   });
   // FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details'});
+  
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
-      alert("22");
       // FB.login(function(response){
         var uid = response.authResponse.userID;
         var accessToken = response.authResponse.accessToken;
         // alert(accessToken);
         $("#uid").val(uid);
         $("#access_token").val(accessToken);
+        alert($("#uid"));
         $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
 
       });
     // },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
     } else if (response.status === 'not_authorized') {
       FB.login(function(response){
-        alert("33");
         var uid = response.authResponse.userID;
         var accessToken = response.authResponse.accessToken;
         $("#uid").val(uid);
