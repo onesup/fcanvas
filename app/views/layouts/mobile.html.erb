@@ -35,7 +35,6 @@
                       // alert(accessToken);
                       $("#uid").val(uid);
                       $("#access_token").val(accessToken);
-                      alert($("#uid"));
                       $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
 
                     });
@@ -50,6 +49,7 @@
                       });        
                     },{scope: 'email, publish_stream, publish_actions, user_relationship_details,user_photos'});
                   } else {
+                    alert("잘못된 접근입니다.");
                     FB.login(function(response){
                       var uid = response.authResponse.userID;
                       var accessToken = response.authResponse.accessToken;
