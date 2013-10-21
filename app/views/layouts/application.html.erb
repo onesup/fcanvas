@@ -20,6 +20,16 @@
       $(function() {
           $('#comment_open').bind('click', function(e) {
               e.preventDefault();
+              FB.getLoginStatus(function(response) {
+                if (response.status === 'not_authorized') {
+                  alert("페이스북 로그인이 필요합니다.")
+                  location.reload();
+                }else if (response.status === 'connected'){
+
+                }else{
+                  alert("else");
+                }
+              });
               $('#comment_popup').bPopup({
                 follow: [false, false], //x, y
                 position: [101, 850] //x, y
