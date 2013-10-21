@@ -3,7 +3,7 @@ class Admin::DashboardController < ApplicationController
   
   def index
     @total_wall_posts_count = WallPost.count
-    @heroes_count = Hero.registerd_heroes_count 
+    @heroes_count = Hero.last.total || 0
   end
   
   def wall_posts_count
