@@ -1,4 +1,5 @@
 Fcanvas::Application.routes.draw do
+  get "heroes/count"
   get "wall_posts/create"
   get 'test' => 'page_tab#test'
   get 'children' => 'home#index'
@@ -10,7 +11,8 @@ Fcanvas::Application.routes.draw do
   get 'mobile_contents' => 'm#contents'
   get 'page_tab' => 'page_tab#index'
   get 'page_tab_gate' => 'page_tab#fan_gate'
-
+  get 'api/miraclehospital/heroes/count' => 'heroes#count'
+  get 'count' => 'heroes#count'
   namespace :page_tab do
     resources :wall_posts, only: [:create]
   end

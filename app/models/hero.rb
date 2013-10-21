@@ -8,6 +8,7 @@ class Hero < ActiveRecord::Base
     # Hero.count == 0 ?  0 : Hero.last.total
     WallPost.count
   end
+  
   def self.registering(user)
     total_heroes = Hero.count == 0 ?  0 : Hero.last.total
     if user.wall_posts.count == 1
