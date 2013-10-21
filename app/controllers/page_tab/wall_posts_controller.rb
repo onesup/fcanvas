@@ -1,10 +1,10 @@
 class PageTab::WallPostsController < ApplicationController
   def create
     
-    unless session[:facebook_uid]
+    unless flash[:facebook_params]
       redirect_to root_path
     else
-      user = User.find_by_uid(session[:facebook_uid])
+      user = User.find_by_uid(flash[:facebook_params]["user_id"])
       @wall_post = user.wall_posts.new(wall_post_params)    
       respond_to do |format|
         if @wall_post.save

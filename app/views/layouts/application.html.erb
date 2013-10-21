@@ -69,6 +69,7 @@ window.fbAsyncInit = function() {
     } else if (response.status === 'not_authorized') {
       FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details,user_photos'});
     } else {
+      
     }
   });
   FB.api(

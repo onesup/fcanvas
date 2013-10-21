@@ -21,9 +21,13 @@ class PageTabController < ApplicationController
       if facebook_params['page']['liked'] == false
         redirect_to page_tab_gate_path
       else
-        user = User.create_or_find_fan!(facebook_params['user_id'], facebook_params['oauth_token'])
-        session[:facebook_uid] = user.uid
-        session[:facebook_token] = user.token.access_token
+        begin
+          user = User.create_or_find_fan!(facebook_params['user_id'], facebook_params['oauth_token'])
+          session[:facebook_uid] = user.uid
+          session[:facebook_token] = user.token.access_token
+        rescue
+          redirect_to page_tab_path
+        end
       end
 
     end
