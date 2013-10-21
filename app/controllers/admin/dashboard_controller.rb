@@ -7,7 +7,7 @@ class Admin::DashboardController < ApplicationController
   end
   
   def wall_posts_count
-    @wall_posts = WallPost.order("created_at desc")
+    @wall_posts = WallPost
   end
   
   def heroes_count

@@ -15,6 +15,8 @@ Fcanvas::Application.routes.draw do
   
   namespace :admin do
     get '/' => 'dashboard#index', ad: 'admin'
+    get 'heroes_count' => 'dashboard#heroes_count'
+    get 'wall_posts_count' => 'dashboard#wall_posts_count'
   end
   
   namespace :page_tab do
