@@ -8,17 +8,22 @@ class M::WallPostsController < ApplicationController
       access_token = params[:access_token]
     end
     user = User.find_by_uid(uid)
-    wall_post = user.wall_posts.new(wall_post_params)
-    respond_to do |format|
-      if wall_post.save
-        wall_post.post
-        flash[:popup] = "complete"
-        format.html { redirect_to mobile_path}
-        format.json { render json: wall_post, status: :created, location: wall_post }
-      else
-        flash[:popup] = "invalid"
-        format.html { redirect_to mobile_path }
-        format.json { render json: wall_post.errors, status: :unprocessable_entity }
+    if user.nil?
+      flash[:popup] = "need_reload"
+      redirect_to mobile_path
+    else
+      wall_post = user.wall_posts.new(wall_post_params)
+      respond_to do |format|
+        if wall_post.save
+          wall_post.post
+          flash[:popup] = "complete"
+          format.html { redirect_to mobile_path}
+          format.json { render json: wall_post, status: :created, location: wall_post }
+        else
+          flash[:popup] = "invalid"
+          format.html { redirect_to mobile_path }
+          format.json { render json: wall_post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

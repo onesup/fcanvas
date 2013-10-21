@@ -37,12 +37,9 @@
                 follow: [false, false], //x, y
                 position: ['auto', 150] //x, y
               });
-            <% elsif flash[:popup] == "timelimit" %>
-              alert("응원은 20초에 한번만 가능합니다.");
-              $('#mobile_comment_invalid_popup').bPopup({
-                follow: [false, false], //x, y
-                position: ['auto', 150] //x, y
-              });
+            <% elsif flash[:popup] == "need_reload" %>
+              location.reload();
+              
             <% end %>
                         
             window.setTimeout(checkLogStatus, 1000);
