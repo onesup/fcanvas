@@ -7,17 +7,20 @@ class User < ActiveRecord::Base
       fan = User.new
       Token.create_or_update_token!(fan, access_token)
       fan.uid = uid
-      fan.detail_from_facebook
+      fan.detail_from_facebook(access_token)
       fan.save
     else
       fan = find_by_uid(uid)
+      Token.create_or_update_token!(fan, access_token)
+      fan.detail_from_facebook(access_token)
+      fan.save
     end
-    Token.create_or_update_token!(fan, access_token)
+    # Token.create_or_update_token!(fan, access_token)
     fan
   end
   
-  def detail_from_facebook
-    graph = Koala::Facebook::API.new(self.token.access_token)
+  def detail_from_facebook(access_token)
+    graph = Koala::Facebook::API.new(access_token)
     profile = graph.get_object("me")
     self.name = profile["name"]
     self.profile_image = graph.get_picture(profile["id"])
