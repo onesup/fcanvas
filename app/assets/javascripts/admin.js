@@ -18,3 +18,4 @@
 //= require DT_bootstrap
 //= require bootstrap.min
 //= require scripts
+//= require jquery.shorten.1.0
