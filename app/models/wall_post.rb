@@ -22,7 +22,9 @@ class WallPost < ActiveRecord::Base
     begin 
       api.put_picture(Rails.root.to_s+"/app/assets/images/posting_img.jpg","image/jpeg", {:message => self.post_message})
     rescue Koala::Facebook::AuthenticationError
-      
+      puts "@@@@@@@@@@@@@@@@@"
+      puts "Koala::Facebook::AuthenticationError"
+      puts "@@@@@@@@@@@@@@@@@"
     end
     Hero.registering(user)
   end
