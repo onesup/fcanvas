@@ -12,9 +12,11 @@ class HomeController < ApplicationController
   end
   
   def page_tab_gate
+
   end
   
   def mobile_gate
+
   end
   
   def please_like_this_page
