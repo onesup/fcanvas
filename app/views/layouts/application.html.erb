@@ -15,100 +15,81 @@
 </head>
 <body id="main">
   <div id="fb-root"></div>
-  <script type="text/javascript">
-  ;(function($) {
-      $(function() {
-          $('#comment_open').bind('click', function(e) {
-              e.preventDefault();
-              FB.getLoginStatus(function(response) {
-                if (response.status === 'not_authorized') {
-                  alert("페이스북 로그인이 필요합니다.")
-                  location.reload();
-                }else if (response.status === 'connected'){
+<script type="text/javascript">
 
-                }else{
-                  alert("else");
-                }
-              });
-              $('#comment_popup').bPopup({
-                follow: [false, false], //x, y
-                position: [101, 850] //x, y
-              });
-          });
-
-          $(document).ready(function(){
-              $("#comments_box").infinitescroll({
-                navSelector: "nav.pagination",
-                nextSelector: "nav.pagination a[rel=next]",
-                itemSelector: "#wall_posts"
-              });
-            <% if flash[:popup] == "complete" %>
-              $('#comment_complete_popup').bPopup({
-                follow: [false, false], //x, y
-                position: [200, 850] //x, y
-              });
-            <% elsif flash[:popup] == "invalid" %>
-              $('#comment_invalid_popup').bPopup({
-                follow: [false, false], //x, y
-                position: [200, 850] //x, y
-              });
-            <% end %>
-          });
-
-      });
-  })(jQuery);
-
-window.fbAsyncInit = function() {
-// init the FB JS SDK
-  FB.init({
-    appId      : '<%= FACEBOOK_CONFIG[:app_id] %>',                        // App ID from the app dashboard
-    channelUrl : '//<%= FACEBOOK_CONFIG[:domain] %>/channel.html', // Channel file for x-domain comms
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
-
-  FB.getLoginStatus(function(response) {
-    if (response.status === 'connected') {
-      var uid = response.authResponse.userID;
-      var accessToken = response.authResponse.accessToken;
-      $("#uid").val(uid);
-      $("#access_token").val(accessToken);
-      $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {
-      });
-    } else if (response.status === 'not_authorized') {
-      FB.login(function(response){},{scope: 'email, publish_stream, user_relationship_details,user_photos'});
-    } else {
-      alert("캠페인에 참여하기 위해서는 페이스북 로그인이 필요합니다.")
-    }
-  });
-  FB.api(
-    'me/hero_for_children:become',
-    'post',
-    {
-      hero: "http://samples.ogp.me/179815208874293"
-    },
-    function(response) {
-      // handle the response
-    }
-  );
-  FB.Canvas.setSize();
-  FB.Canvas.setAutoGrow();
-  FB.Event.subscribe('edge.create',
-        function(href, widget) {
-          location.reload();
-          location.href()
-        }
-    );
+var cb = function(response){
+  if (response.status === 'connected') {
+    comment_popup(response);
+  } else if (response.status === 'not_authorized') {
+    alert('캠페인 참여를 위해 페이스북 로그인이 필요합니다.');
+  } else {
+    alert('캠페인 참여를 위해 페이스북 로그인이 필요합니다.');
+  }
 };
 
-(function(d){
-  var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement('script'); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js";
-  ref.parentNode.insertBefore(js, ref);
-}(document));
+function comment_popup(response){
+  var uid = response.authResponse.userID;
+  var accessToken = response.authResponse.accessToken;
+  $("#uid").val(uid);
+  $("#access_token").val(accessToken);
+  $.post( "/users", {uid: uid, access_token: accessToken}, function( data ) {});
+  $('#comment_popup').bPopup({
+  follow: [false, false], //x, y
+  position: [101, 850] //x, y
+  });
+};
+
+
+$(document).ready(function() {
+  $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/ko_KR/all.js', function(){
+    FB.init({
+      appId      : '<%= FACEBOOK_CONFIG[:app_id] %>',                        // App ID from the app dashboard
+      channelUrl : '//<%= FACEBOOK_CONFIG[:domain] %>/channel.html', // Channel file for x-domain comms
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+    
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'not_authorized') {
+      }else if (response.status === 'connected'){
+      }else{
+        alert("캠페인에 참여하기 위해서는 페이스북 로그인이 필요합니다.");
+      }
+    });
+    
+    FB.Canvas.setSize();
+    FB.Canvas.setAutoGrow();
+    
+    $('#comment_open').bind('click', function(e) {
+      e.preventDefault();
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'not_authorized') {
+          FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
+        }else if (response.status === 'connected'){
+          comment_popup(response);
+        }else{
+          alert("캠페인에 참여하기 위해서는 페이스북 로그인이 필요합니다.");
+        }
+      });
+    });
+
+    <% if flash[:popup] == "complete" %>
+      $('#comment_complete_popup').bPopup({
+        follow: [false, false], //x, y
+        position: [200, 850] //x, y
+      });
+    <% elsif flash[:popup] == "invalid" %>
+      $('#comment_invalid_popup').bPopup({
+        follow: [false, false], //x, y
+        position: [200, 850] //x, y
+      });
+    <% end %>
+
+  });
+});
+
 
 </script>
 <%= yield %>
