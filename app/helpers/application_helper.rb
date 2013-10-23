@@ -1,4 +1,67 @@
 module ApplicationHelper
+  A_BOX_PER_FANS = 100
+  def extract_tens(number)
+    tens = (number / 10) * 10
+    ones = number % 10
+    [tens, ones]
+  end
+  
+  def fans_to_boxes(fans_count)
+    boxes = fans_count / A_BOX_PER_FANS
+  end
+  
+  def box_set(fans_count)
+    boxes = fans_to_boxes(fans_count)
+    result = [0, 0, 0]
+    case boxes
+    when 0..20
+      result = [boxes, 0, 0]
+    when 21..60
+      result = [20, boxes - 20, 0]
+    when 61..120
+      result = [20, 40, boxes - (20+40)]
+    else
+      result = [20, 40, 60]
+    end
+    result
+  end
+  
+  def first_blocks(boxes_count)
+    result = [0,0]
+    result = fill_boxes(boxes_count, result)
+  end
+  
+  def second_blocks(boxes_count)
+    result = [0,0,0,0]
+    result = fill_boxes(boxes_count, result)
+  end
+  
+  def third_blocks(boxes_count)
+    result = [0,0,0,0,0,0]
+    result = fill_boxes(boxes_count, result)
+  end
+  
+  def fill_boxes(boxes_count, boxes_array)
+    filled_boxes = extract_tens(boxes_count)
+    boxes_array[-1] = filled_boxes.last
+    unless filled_boxes.first == 0
+      (filled_boxes.first / 10).times do |n|
+        boxes_array = boxes_array.rotate(1)
+        boxes_array[-1] = 10
+      end
+    end
+    boxes_array
+  end
+  
+  def render_a_box_group(group_name, boxes_count)
+    result = String.new
+    eval("#{group_name}_blocks(boxes_count)").each do |number|
+      result << render_a_line(number)
+    end
+    result
+    
+  end
+  
   def number_to_image_tag(number)
     number = "%07d" % number
     parts = number.split(".")
@@ -18,36 +81,36 @@ module ApplicationHelper
     numbers = numbers.gsub(/\<div class\=\"n\"\>\<img alt\=\"\,\" src\=\"\/images\/page\_tab\/num\/\,\.jpg\" \/\>\<\/div\>/){|s| '<div class="n spacer">&nbsp</div>'}
   end
   
-  def fans_to_boxes(heros)
-    donate_unit_won = 5000
-    stage1 = 10000000
-    stage2 = 30000000
-    stage3 = 50000000
-    box_value = stage1 / 20
-    stage1_boxes = stage1 / box_value
-    stage2_boxes = (stage2 / box_value) - stage1_boxes
-    stage3_boxes = (stage3 / box_value) - (stage1_boxes + stage2_boxes)
-    total_boxes = stage1_boxes + stage2_boxes + stage3_boxes
-    donated_boxes = (heros * donate_unit_won) / box_value
-    stage1_result = stage1_boxes - donated_boxes
-    total_stock = total_boxes - donated_boxes
-    stage1_result = stage1_boxes 
-    stage2_result = stage2_boxes
-    stage3_result = stage3_boxes
-    stage1_stock = total_stock - (stage2_boxes + stage3_boxes) > 0 ? total_stock - (stage2_boxes + stage3_boxes) : 0
-    if (stage1_boxes + stage3_boxes) - donated_boxes > 0
-      stage2_stock = (stage1_boxes + stage3_boxes) - donated_boxes
-    elsif (stage1_boxes + stage3_boxes) - donated_boxes > stage2_boxes
-    else
-      stage2_stock = 0
-    end
-    if donated_boxes > (stage1_boxes + stage2_boxes)
-      stage3_stock = total_stock
-    else
-      stage3_stock = stage3_boxes
-    end
-    [[stage1_boxes, stage1_stock], [stage2_boxes, stage2_stock], [stage3_boxes, stage3_stock]]
-  end
+  # def fans_to_boxes(heros)
+  #   donate_unit_won = 5000
+  #   stage1 = 10000000
+  #   stage2 = 30000000
+  #   stage3 = 50000000
+  #   box_value = stage1 / 20
+  #   stage1_boxes = stage1 / box_value
+  #   stage2_boxes = (stage2 / box_value) - stage1_boxes
+  #   stage3_boxes = (stage3 / box_value) - (stage1_boxes + stage2_boxes)
+  #   total_boxes = stage1_boxes + stage2_boxes + stage3_boxes
+  #   donated_boxes = (heros * donate_unit_won) / box_value
+  #   stage1_result = stage1_boxes - donated_boxes
+  #   total_stock = total_boxes - donated_boxes
+  #   stage1_result = stage1_boxes 
+  #   stage2_result = stage2_boxes
+  #   stage3_result = stage3_boxes
+  #   stage1_stock = total_stock - (stage2_boxes + stage3_boxes) > 0 ? total_stock - (stage2_boxes + stage3_boxes) : 0
+  #   if (stage1_boxes + stage3_boxes) - donated_boxes > 0
+  #     stage2_stock = (stage1_boxes + stage3_boxes) - donated_boxes
+  #   elsif (stage1_boxes + stage3_boxes) - donated_boxes > stage2_boxes
+  #   else
+  #     stage2_stock = 0
+  #   end
+  #   if donated_boxes > (stage1_boxes + stage2_boxes)
+  #     stage3_stock = total_stock
+  #   else
+  #     stage3_stock = stage3_boxes
+  #   end
+  #   [[stage1_boxes, stage1_stock], [stage2_boxes, stage2_stock], [stage3_boxes, stage3_stock]]
+  # end
   
   def render_stage1(heros)
     stocks = fans_to_boxes(heros)[0]
@@ -70,6 +133,24 @@ module ApplicationHelper
     end
     result
   end
+  
+  def render_a_line(ones)
+    init_line = [nil,nil,nil,nil,nil, nil,nil,nil,nil,nil]
+    ones.times do |n|
+      init_line[n] = 1
+    end
+    result = String.new
+    init_line.each do |box|
+      if box.nil?
+        result << '<li class="blank"></li>'
+      else
+        result << '<li class="fill_01"></li>'
+      end
+    end
+    result
+  end
+  
+  
   
   def time_iterate(start_time, end_time, step, &block)
     begin

@@ -4,6 +4,7 @@ class PageTabController < ApplicationController
     require_like unless flash[:facebook_params].nil?
     @wall_post = WallPost.new
     @wall_posts = WallPost.order('created_at DESC').page(params[:page]).per(5)
+    @count = WallPost.count
   end
 
   def fan_gate

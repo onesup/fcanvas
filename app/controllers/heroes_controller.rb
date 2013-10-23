@@ -10,4 +10,7 @@ class HeroesController < ApplicationController
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Request-Method'] = '*'
   end
+  
+  def render_test
+  end
 end

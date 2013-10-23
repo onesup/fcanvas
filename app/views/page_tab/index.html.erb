@@ -21,182 +21,38 @@
     </p>
   </div><!--end:btn_block-->
   <!--start:status-->
-          <div class="status_block">
-          	<div class="txt">
-              <%= image_tag "page_tab/txt_status.jpg" %>
-              </div>
-              <div class="status clearfix">
-              	<ul class="s_first clearfix">
-                  <%= raw render_stage1(WallPost.count) %>
-                      <!--txt_block-->
-                      <li class="txt_block">
-                        <%= image_tag "page_tab/status/1000_01.jpg" %>
-                      </li>
-                  </ul>
-              	<ul class="s_second clearfix">
-                  	<!-- 30-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>             
-                  	<!-- 20-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                      <!-- 10-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                      <!--txt_block-->
-                <li class="txt_block">
-                      <%= image_tag "page_tab/status/3000_01.jpg" %>
-                      </li>
-                  </ul>
-              	<ul class="s_third clearfix">
-                  	<li class="cross">
-                      <%= image_tag "page_tab/status/cross_blank.jpg" %>
-                      </li>
-                  	<!-- 40-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>                    
-                  	<!-- 30-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>             
-                  	<!-- 20-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                      <!-- 10-->
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                  	<li class="blank">
-                      </li>
-                      <!--txt_block-->
-                      <li class="txt_block">
-                        <%= image_tag "page_tab/status/5000_01.jpg" %>
-                      </li>
-                  </ul>               
-              </div>
-          </div>
+  <div class="status_block">
+    <div class="txt">
+      <%= image_tag "page_tab/txt_status.jpg" %>
+    </div>
+    <div class="status clearfix">
+      <ul class="s_first clearfix">
+        <!--txt_block-->
+        <%=raw render_a_box_group("first",box_set(@count)[0]) %>
+        <li class="txt_block">
+          <%= image_tag "page_tab/status/1000_01.jpg" %>
+        </li>
+      </ul>
+      <ul class="s_second clearfix">
+        <!--txt_block-->
+        <%=raw render_a_box_group("second",box_set(@count)[1]) %>
+        <li class="txt_block">
+          <%= image_tag "page_tab/status/3000_01.jpg" %>
+        </li>
+      </ul>
+      <ul class="s_third clearfix">
+      	<li class="cross">
+          <%= image_tag "page_tab/status/cross_blank.jpg" %>
+        </li>
+        <%=raw render_a_box_group("third",box_set(@count)[2]) %>
+        <!-- 40-->
+        <!--txt_block-->
+        <li class="txt_block">
+          <%= image_tag "page_tab/status/6000_01.jpg" %>
+        </li>
+      </ul>               
+    </div>
+  </div>
           <!--end:status-->
   <!--start:comment list-->
   <div class="comment_list_block">

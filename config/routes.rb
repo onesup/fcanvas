@@ -13,6 +13,7 @@ Fcanvas::Application.routes.draw do
   get 'page_tab_gate' => 'page_tab#fan_gate'
   get 'api/miraclehospital/heroes/count' => 'heroes#count'
   get 'count' => 'heroes#count'
+  get 'render_test' => 'heroes#render_test'
   get 'sdk' => 'sdk_test#index'
   namespace :admin do
     get '/' => 'dashboard#index', ad: 'admin'
