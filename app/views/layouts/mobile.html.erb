@@ -21,9 +21,10 @@ var cb = function(response){
   if (response.status === 'connected') {
     comment_popup(response);
   } else if (response.status === 'not_authorized') {
-    alert('캠페인 참여를 위해 페이스북 로그인이 필요합니다.');
+    FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
   } else {
     alert('캠페인 참여를 위해 페이스북 로그인이 필요합니다.');
+    FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
   }
 };
 
@@ -74,6 +75,7 @@ $(document).ready(function() {
           comment_popup(response);
         }else{
           alert("캠페인에 참여하기 위해서는 페이스북 로그인이 필요합니다.");
+          FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
         }
       });
     });
