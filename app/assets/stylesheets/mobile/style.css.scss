@@ -450,7 +450,13 @@ div#mobile_need_like div.btn_like{
   -o-transform: scale(2);            /* opera용 */ 
   -ms-transform: scale(2);          /* IE용 */ 
 }
- 
+
+div#mobile_need_like div.btn_block{
+  padding: 0;
+  padding-bottom: 20px;
+	text-align:right;
+}
+
 
 #mobile_need_like{ display:none; }
 #mobile_comment_complete_popup{ display:none; }

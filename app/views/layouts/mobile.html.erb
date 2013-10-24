@@ -18,13 +18,12 @@
 <script type="text/javascript">
 
 var cb = function(response){
-  if (response.status === 'connected') {
+  if (response.status === 'connected') { 
     comment_popup(response);
   } else if (response.status === 'not_authorized') {
-    FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
+    // FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
   } else {
-    alert('캠페인 참여를 위해 페이스북 로그인이 필요합니다.');
-    FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
+    alert("무럭무럭맨의 체력이 5p ▼ 됐습니다.")
   }
 };
 
@@ -74,7 +73,6 @@ $(document).ready(function() {
         }else if (response.status === 'connected'){
           comment_popup(response);
         }else{
-          alert("캠페인에 참여하기 위해서는 페이스북 로그인이 필요합니다.");
           FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
         }
       });
@@ -84,7 +82,7 @@ $(document).ready(function() {
   
 });
 </script>
-<fb:like href="https://www.facebook.com/pages/ThchStartup/1377173915843709" colorscheme="light" layout="button_count" action="like" show_faces="false" send="false"></fb:like>
+<fb:like href="https://www.facebook.com/miraclehospital" colorscheme="light" layout="button_count" action="like" show_faces="false" send="false"></fb:like>
 
 <%= yield %>
 
