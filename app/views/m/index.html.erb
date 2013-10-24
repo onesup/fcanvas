@@ -64,7 +64,8 @@
     	<div>
           	<h3>추가기부</h3>
             <p>
-            - 또 다른 방법의 기부를 원하시면 홈페이지를 통해 참여가능합니다.<br><a href="http://miracle365.org", target="_blank"><홈페이지 바로가기></a>
+            - 또 다른 방법의 기부를 원하시면 홈페이지를 통해 참여가능합니다.<br>
+            <a href="http://miracle365.org", target="_blank"><홈페이지 바로가기></a>
             </p>
         </div>
         <div>
@@ -97,7 +98,7 @@
     <section id="content">
       <div class="alert comment btn_block">
       <p>
-        <%= link_to image_tag("m/pop/btn_alert_01.jpg", width: "120") %>
+        <%= link_to image_tag("m/pop/btn_alert_01.jpg", width: "120"), nil, class: "b-close" %>
       </p>
       </div>
     </section>
@@ -112,7 +113,7 @@
     <section id="content">
     <div class="alert comment btn_block">
     <p>
-      <%= link_to image_tag("m/pop/btn_alert_02.jpg", width: "112") %>
+      <%= link_to image_tag("m/pop/btn_alert_02.jpg", width: "112"), nil, class: "b-close" %>
     </p>
     </div>
     </section>
@@ -143,26 +144,25 @@
 <div id="comment_popup">
   <header id="comment_header">	
     <div class="btn_block">
-      <%= link_to image_tag("m/pop/btn_close.jpg", width: "21") %>
+      <%= link_to image_tag("m/pop/btn_close.jpg", width: "21"), nil, class: "b-close" %>
     </div>
     <div class="title">
       <%= image_tag("m/pop/title_comment.jpg", width: "281") %>
     </div>
   </header>
   <section id="content">
-    <div>
-      <%= simple_form_for [:m, @wall_post], html:{id:"new_mobile_wall_post"} do |f| %>
-        <%= f.input :message, input_html: {class: "input_comment", id: "wall_post_text_area_input"}, label: false, required: false%>
+    <%= simple_form_for [:m, @wall_post], html:{id:"new_mobile_wall_post"} do |f| %>
+      <div>
+        <%= f.input :message, input_html: {class: "input_comment", id: "wall_post_text_area_input"}, 
+          label: false, required: false %>
         <%= hidden_field_tag 'access_token' %>
         <%= hidden_field_tag 'uid' %>
-        
-      <% end %>
-    </div>
+      </div>
     <div class="comment btn_block">
       <p>
-        <%=link_to image_tag("m/pop/btn_comment.jpg", width: 112, class: "button", id: "comment_submit", alt: "comment"), nil, id: "comment_submit_button"%>
-      <%#=image_submit_tag("m/pop/btn_comment.jpg", class: "button", id: "comment_submit", alt: "comment") %>
+        <%= image_submit_tag("m/pop/btn_comment.png", class: "button", id: "comment_submit") %>
       </p>
     </div>
+    <% end %>
   </section>
 </div>

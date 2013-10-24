@@ -1,6 +1,5 @@
 class PageTab::WallPostsController < ApplicationController
   def create
-    
     unless session[:facebook_uid]
       redirect_to root_path
     else

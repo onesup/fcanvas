@@ -2,7 +2,7 @@ development:
   :page_id: "1377173915843709"
   :app_id: "166052670263191"
   :app_secret: "d57f8700c5c118ea77021c09b0178aca"
-  :domain: "canvas.moncl.net:3000"
+  :domain: "localhost:3000"
 
 test:
   :page_id: "1377173915843709"

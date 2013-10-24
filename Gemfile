@@ -28,7 +28,7 @@ end
 group :development do
   gem 'sqlite3'
   gem 'pry'
-  gem 'capistrano', github: "capistrano/capistrano"
+  gem 'capistrano', '~> 2.15.4'
   # gem 'guard-rails'
 end
 

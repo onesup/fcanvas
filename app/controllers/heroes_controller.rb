@@ -1,5 +1,5 @@
 class HeroesController < ApplicationController
-
+  layout false
   after_filter :set_access_control_headers
   
   def count
