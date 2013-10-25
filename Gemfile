@@ -29,7 +29,6 @@ group :development do
   gem 'sqlite3'
   gem 'pry'
   gem 'capistrano', '~> 2.15.4'
-  # gem 'guard-rails'
 end
 
 group :production do

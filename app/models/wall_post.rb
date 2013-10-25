@@ -7,12 +7,12 @@ class WallPost < ActiveRecord::Base
 '' + self.user.name + 
 '영웅이 말씀하셨습니다.
 
+댓글기부 ▶ http://bit.ly/173wYGA
+
 영웅의 한마디가 기부금으로 전환되어 
 기적의 어린이재활병원 건립 후원금으로 지원됩니다.
 
-지금 기적을 만드는 영웅이 되어주세요!
-
-참여하기 ▶ http://bit.ly/173wYGA'
+지금 기적을 만드는 영웅이 되어주세요!'
   end
   
   def post
