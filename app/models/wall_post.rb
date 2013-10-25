@@ -18,9 +18,10 @@ class WallPost < ActiveRecord::Base
   def post
     user = self.user
     api = Koala::Facebook::API.new(self.user.token.access_token)
-    picture = Koala::UploadableIO.new(File.open(Rails.root.to_s+"/app/assets/images/posting_img.jpg"))
+    pictures = %w(posting_img posting_01 posting_02 posting_03)
+    picture = "#{Rails.root.to_s}/app/assets/images/#{pictures.shuffle.last}.jpg"
     begin 
-      api.put_picture(Rails.root.to_s+"/app/assets/images/posting_img.jpg","image/jpeg", {:message => self.post_message})
+      api.put_picture(picture,"image/jpeg", {:message => self.post_message})
     rescue Koala::Facebook::AuthenticationError
       puts "@@@@@@@@@@@@@@@@@"
       puts "Koala::Facebook::AuthenticationError"
