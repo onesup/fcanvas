@@ -443,6 +443,23 @@ div.alert{
   }
 }
 
+div.like_button{
+//  text-align: right;
+//  padding-right: 15%;
+  iframe{
+  transform: scale(1.5);
+  -ms-transform: scale(1.5); 
+  -webkit-transform: scale(1.5); 
+  -o-transform: scale(1.5); 
+  -moz-transform: scale(1.5); 
+  transform-origin: top left;
+  -ms-transform-origin: top left;
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -webkit-transform-origin: top left;
+  }
+}
+
 div#mobile_need_like div.btn_like{
   transform: scale(2);                 
   -moz-transform: scale(2);        /* firefox 용 */ 
