@@ -38,6 +38,9 @@ class MController < ApplicationController
     @wall_posts = WallPost.limit(5).order('created_at DESC')
   end
   
+  def characters
+  end
+  
   def fan_gate
     @result = require_like
     unless @result == []
