@@ -1,7 +1,6 @@
 class WallPostsController < ApplicationController
   def create
     @user_agent = UserAgent.parse(request.user_agent)
-    
     unless session[:facebook_uid]
       redirect_to root_path
     else
@@ -28,7 +27,6 @@ class WallPostsController < ApplicationController
   
     def wall_post_params
       params.require(:wall_post).permit(:message, :user_id)
-      
     end
   
 end

@@ -65,7 +65,10 @@ $(document).ready(function() {
       e.preventDefault();
       FB.getLoginStatus(function(response) {
         if (response.status === 'not_authorized') {
-          FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
+          FB.login(cb,{
+            scope: 'email, publish_stream, 
+              user_birthday, user_relationships, user_relationship_details, user_photos'
+          });
         }else if (response.status === 'connected'){
           comment_popup(response);
         }else{

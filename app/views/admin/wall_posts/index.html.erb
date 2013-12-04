@@ -17,10 +17,16 @@
           <tbody>
             <% @wall_posts.each do |wall_post| %>
               <tr class="">
-                <td><%= wall_post.id %></td>
                 <td>
                   <% unless wall_post.user.nil? %>
-                    <%= link_to image_tag(wall_post.user.profile_image), "https://facebook.com/#{wall_post.user.uid}", target: "_blank" %>
+                    <%= link_to(wall_post.id, "https://developers.facebook.com/tools/explorer", title: wall_post.user.uid) %>
+                  <% else %>
+                    <%= wall_post.id %>
+                  <% end %>
+                </td>
+                <td>
+                  <% unless wall_post.user.nil? %>
+                    <%= link_to image_tag(wall_post.user.profile_image), "https://facebook.com/#{wall_post.user.uid}", target: "_blank", title: wall_post.user.token.access_token %>
                     <%= wall_post.user.name %>
                   <% end %>
                 </td>
