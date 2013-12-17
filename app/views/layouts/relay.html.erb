@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#">
+<head prefix="og: http://ogp.me/ns#">
+  <title>Hospital</title>
+
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <meta property="fb:app_id" content="666292156743698" />
+  <meta property="og:type"   content="myapp:myobject" />
+  <meta property="og:url"  content="http://bit.ly/173wYGA" />
+  <meta property="og:title"  content="기적의 어린이재활병원" />
+  <meta property="og:image"  content="http://farm4.staticflickr.com/3665/10288523825_3fea0316ef_o.jpg" />
+
+</head>
+<body id="main">
+  <div id="fb-root"></div>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+  $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/ko_KR/all.js', function(){
+    FB.init({
+      appId      : '666292156743698',                        // App ID from the app dashboard
+      channelUrl : '//ssl.minivertising.kr/channel.html', // Channel file for x-domain comms
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+        
+    FB.Canvas.setSize();
+    FB.Canvas.setAutoGrow();
+    
+  });
+});
+
+
+</script>
+<%= yield %>
+
+
+</body>
+</html>
