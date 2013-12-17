@@ -88,16 +88,9 @@ module ApplicationHelper
     parts = parts.insert(0, add_zeros)
     parts.gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
     numbers = parts
-<<<<<<< HEAD
     numbers = numbers.gsub(/./){|s| "<div class='n'><img alt='"+s+"' src='img/common/img/sns_event_num" + s + ".jpg' /></div>"}
     numbers = numbers.gsub(/\<div class\=\'n\'\>\<img alt\=\'\,\' src\=\'img\/common\/img\/sns_event_num\,\.jpg\' \/\>\<\/div\>/){|s| "<div class='n spacer'>&nbsp</div>"}
   end
-=======
-    numbers = numbers.gsub(/./){|s| content_tag(:div, raw('<img alt="'+s+'" src="img/common/img/sns_event_num' + s + '.jpg" />'), class: "n")}
-    numbers = numbers.gsub(/\<div class\=\"n\"\>\<img alt\=\"\,\" src\=\"img\/common\/img\/sns_event_num\,\.jpg\" \/\>\<\/div\>/){|s| '<div class="n spacer">&nbsp</div>'}
-  end
-  
->>>>>>> parent of ad6c1c6... Revert "api for 푸르메재단"
 
   
   def render_stage1(heros)

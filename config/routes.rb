@@ -16,6 +16,7 @@ Fcanvas::Application.routes.draw do
   get 'count' => 'heroes#count'
   get 'render_test' => 'heroes#render_test'
   get 'sdk' => 'sdk_test#index'
+  get 'relay_campaign' => 'relay_campaign#index'
   
   get 'api/miraclehospital/heroes/counter' => 'heroes#counter'
   match 'counter' => 'heroes#counter', :via => :get, :as => "counter"
