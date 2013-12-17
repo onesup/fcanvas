@@ -88,9 +88,10 @@ module ApplicationHelper
     parts = parts.insert(0, add_zeros)
     parts.gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
     numbers = parts
-    numbers = numbers.gsub(/./){|s| "<div class='n'><img alt='"+s+"' src='img/common/img/sns_event_num" + s + ".jpg' /></div>"}
-    numbers = numbers.gsub(/\<div class\=\'n\'\>\<img alt\=\'\,\' src\=\'img\/common\/img\/sns_event_num\,\.jpg\' \/\>\<\/div\>/){|s| "<div class='n spacer'>&nbsp</div>"}
+    numbers = numbers.gsub(/./){|s| content_tag(:div, raw('<img alt="'+s+'" src="img/common/img/sns_event_num' + s + '.jpg" />'), class: "n")}
+    numbers = numbers.gsub(/\<div class\=\"n\"\>\<img alt\=\"\,\" src\=\"img\/common\/img\/sns_event_num\,\.jpg\" \/\>\<\/div\>/){|s| '<div class="n spacer">&nbsp</div>'}
   end
+  
 
   
   def render_stage1(heros)
@@ -98,18 +99,18 @@ module ApplicationHelper
     boxes = stocks.first
     stocks = stocks.last
     if stocks == 20
-      blanks = "<li class='blank'></li>" * stocks
+      blanks = '<li class="blank"></li>' * stocks
       result = blanks
     elsif stocks < 20 and stocks >= 10
-      blanks2 = "<li class='blank'></li>" * (stocks - 10)
-      fills1 = "<li class='fill_01'></li>" * (boxes - stocks)
-      blanks1 = "<li class='blank'></li>" * 10
+      blanks2 = '<li class="blank"></li>' * (stocks - 10)
+      fills1 = '<li class="fill_01"></li>' * (boxes - stocks)
+      blanks1 = '<li class="blank"></li>' * 10
       result = blanks1 + fills1 + blanks2
     elsif stocks < 9
       # blanks1 = '<li class="blank"></li>' * (10)
-      blanks1 = "<li class='blank'></li>" * (stocks)
-      fills1 = "<li class='fill_01'></li>" * ((boxes - stocks) - 10)
-      fills2 = "<li class='fill_01'></li>" * 10 
+      blanks1 = '<li class="blank"></li>' * (stocks)
+      fills1 = '<li class="fill_01"></li>' * ((boxes - stocks) - 10)
+      fills2 = '<li class="fill_01"></li>' * 10 
       result = fills1 + blanks1 + fills2
     end
     result
@@ -123,7 +124,7 @@ module ApplicationHelper
     result = String.new
     init_line.each do |box|
       if box.nil?
-        result << "<li class='blank'></li>"
+        result << '<li class="blank"></li>'
       else
         result << '<li class="fill_01"></li>'
       end
