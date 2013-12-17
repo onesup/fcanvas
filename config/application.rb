@@ -25,7 +25,7 @@ module Fcanvas
     config.action_dispatch.default_headers = {
       # 'X-XSS-Protection' => '1; mode=block',
       # 'X-Content-Type-Options' => 'nosniff',
-      'X-Frame-Options' => 'ALLOW-FROM https://www.facebook.com'
+      # 'X-Frame-Options' => 'ALLOW-FROM https://www.facebook.com'
     }
   end
 end
