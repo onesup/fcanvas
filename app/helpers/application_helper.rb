@@ -81,18 +81,36 @@ module ApplicationHelper
     numbers = numbers.gsub(/\<div class\=\"n\"\>\<img alt\=\"\,\" src\=\"\/images\/page\_tab\/num\/\,\.jpg\" \/\>\<\/div\>/){|s| '<div class="n spacer">&nbsp</div>'}
   end
   
-  def number_to_big_image_tag_for_org(number)
-    # http://www.miraclehospital.org/img/common/img/sns_event_num6.gif
-    parts = number.to_s
-    add_zeros = "0" * (7 - parts.length)
-    parts = parts.insert(0, add_zeros)
-    parts.gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
-    numbers = parts
-    numbers = numbers.gsub(/./){|s| content_tag(:div, raw('<img alt="'+s+'" src="img/common/img/sns_event_num' + s + '.jpg" />'), class: "n")}
-    numbers = numbers.gsub(/\<div class\=\"n\"\>\<img alt\=\"\,\" src\=\"img\/common\/img\/sns_event_num\,\.jpg\" \/\>\<\/div\>/){|s| '<div class="n spacer">&nbsp</div>'}
-  end
-  
-
+  # def fans_to_boxes(heros)
+  #   donate_unit_won = 5000
+  #   stage1 = 10000000
+  #   stage2 = 30000000
+  #   stage3 = 50000000
+  #   box_value = stage1 / 20
+  #   stage1_boxes = stage1 / box_value
+  #   stage2_boxes = (stage2 / box_value) - stage1_boxes
+  #   stage3_boxes = (stage3 / box_value) - (stage1_boxes + stage2_boxes)
+  #   total_boxes = stage1_boxes + stage2_boxes + stage3_boxes
+  #   donated_boxes = (heros * donate_unit_won) / box_value
+  #   stage1_result = stage1_boxes - donated_boxes
+  #   total_stock = total_boxes - donated_boxes
+  #   stage1_result = stage1_boxes 
+  #   stage2_result = stage2_boxes
+  #   stage3_result = stage3_boxes
+  #   stage1_stock = total_stock - (stage2_boxes + stage3_boxes) > 0 ? total_stock - (stage2_boxes + stage3_boxes) : 0
+  #   if (stage1_boxes + stage3_boxes) - donated_boxes > 0
+  #     stage2_stock = (stage1_boxes + stage3_boxes) - donated_boxes
+  #   elsif (stage1_boxes + stage3_boxes) - donated_boxes > stage2_boxes
+  #   else
+  #     stage2_stock = 0
+  #   end
+  #   if donated_boxes > (stage1_boxes + stage2_boxes)
+  #     stage3_stock = total_stock
+  #   else
+  #     stage3_stock = stage3_boxes
+  #   end
+  #   [[stage1_boxes, stage1_stock], [stage2_boxes, stage2_stock], [stage3_boxes, stage3_stock]]
+  # end
   
   def render_stage1(heros)
     stocks = fans_to_boxes(heros)[0]

@@ -16,10 +16,6 @@ Fcanvas::Application.routes.draw do
   get 'count' => 'heroes#count'
   get 'render_test' => 'heroes#render_test'
   get 'sdk' => 'sdk_test#index'
-  
-  get 'api/miraclehospital/heroes/counter' => 'heroes#counter'
-  match 'counter' => 'heroes#counter', :via => :get, :as => "counter"
-  
   namespace :admin do
     get '/' => 'dashboard#index', ad: 'admin'
     get 'heroes_count' => 'dashboard#heroes_count'
