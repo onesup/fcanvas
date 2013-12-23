@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody>
-            <% time_iterate(Time.now.beginning_of_month, Time.now.end_of_month, 1.day) do |time|%>
+            <% time_iterate((Time.now - 3.months).beginning_of_month, Time.now.end_of_month, 1.day) do |time|%>
               <tr class="">
                 <td><%= time.strftime("%m-%d")%></td>
                 <td><%= Hero.daily_count time %></td>
