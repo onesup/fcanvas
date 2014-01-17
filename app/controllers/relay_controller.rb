@@ -5,7 +5,7 @@ class RelayController < ApplicationController
     if @user_agent.mobile?
       redirect_to mobile_relay_path
     else
-      redirect_to "https://www.facebook.com/miraclehospital/app_666292156743698"
+      redirect_to FACEBOOK_CONFIG[:relay][:app_address]
     end
   end
   
