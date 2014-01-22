@@ -26,14 +26,13 @@ group :doc do
 end
 
 group :development do
+  gem 'quiet_assets'
   gem 'sqlite3'
   gem 'pry'
   gem 'capistrano', '~> 2.15.4'
-  gem 'quiet_assets'
 end
 
 group :production do
-  # gem 'rb-readline', '~> 0.5.0'
   gem 'mysql2'
   gem 'unicorn'
 end
