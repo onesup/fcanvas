@@ -13,16 +13,30 @@ class RelayController < ApplicationController
     app_id = FACEBOOK_CONFIG[:relay][:app_id]
     app_secret = FACEBOOK_CONFIG[:relay][:app_secret]
     oauth = Koala::Facebook::OAuth.new(app_id, app_secret)
-    Rails.logger.info("@@@@@@@" + app_id + "@@@@@@" + app_secret)
     begin
       request = oauth.parse_signed_request(params["signed_request"])
+      result = request["page"]["liked"]
     rescue
-      request["page"]["liked"] = "@@@@@@invalid!!!!"
+      result = "invalid!!!"
     end
-    Rails.logger.info("@@@@@@@" + request["page"]["liked"].to_s)
+    Rails.logger.info("@@@@@@@" + result.to_s)
+    require_like(result)
+  end
+  
+  def tab_fangate
   end
   
   def mobile_relay
     
   end
+  
+  private
+  
+    def require_like(liked)
+      unless liked.nil?
+        if liked == false
+          redirect_to tab_relay_fangate_path
+        end
+      end
+    end
 end

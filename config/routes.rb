@@ -19,6 +19,7 @@ Fcanvas::Application.routes.draw do
   get 'relay_campaign' => 'relay#index'
   get 'mobile_relay' => 'relay#mobile_relay'
   get 'tab_relay' => 'relay#tab_relay'
+  get 'tab_relay_fangate' => 'relay#tab_fangate'
   
   get 'api/miraclehospital/heroes/counter' => 'heroes#counter'
   match 'counter' => 'heroes#counter', :via => :get, :as => "counter"
