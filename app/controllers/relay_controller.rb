@@ -74,18 +74,19 @@ class RelayController < ApplicationController
       result = false
       begin
         query = api.get_connections("me","likes/" + page_id)
-        result = true
+        result = true unless query.empty?
+        info = "true"
       rescue Koala::Facebook::AuthenticationError
         Rails.logger.info "auth error!! uid: " + user.uid
         session[:facebook_uid] = nil
-        # redirect_to fb_login_path
-        query = "auth error"
+        result = false
+        info = "auth error"
       rescue Koala::Facebook::ClientError
         Rails.logger.info "client error!! uid: " + user.uid
         session[:facebook_uid] = nil
-        query = []
+        result = false
+        info = "client error"
       end
-      result = "auth error" if query == "auth error"
       Rails.logger.info "@@@@@check_like: "+ result.to_s
       return result
     end
