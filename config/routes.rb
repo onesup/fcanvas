@@ -17,10 +17,15 @@ Fcanvas::Application.routes.draw do
   get 'render_test' => 'heroes#render_test'
   get 'sdk' => 'sdk_test#index'
   get 'relay_campaign' => 'relay#index'
+  get 'mobile_relay/:uid' => 'relay#mobile_relay'
   get 'mobile_relay' => 'relay#mobile_relay'
   get 'tab_relay' => 'relay#tab_relay'
   get 'tab_relay_fangate' => 'relay#tab_fangate'
-  
+  get 'tab_relay_fangate/:uid' => 'relay#tab_fangate'
+  get 'mobile_relay_login' => 'relay#mobile_login'
+  get 'mobile_relay_login/:uid' => 'relay#mobile_login'
+  get 'mobile_relay_fangate' => 'relay#mobile_fangate'
+  get 'mobile_relay_fangate/:uid' => 'relay#mobile_fangate'
   get 'api/miraclehospital/heroes/counter' => 'heroes#counter'
   match 'counter' => 'heroes#counter', :via => :get, :as => "counter"
   
