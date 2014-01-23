@@ -1,21 +1,27 @@
 body{
   background: #feef43;
   div.like_wrap{
+    width: 100%;
+    margin: auto 0;
     padding-top: 30px;
     text-align: center;
-    img.title{
-      width: 94px;
-    }
-    img.image{
+    div.like_box{
       width: 242px;
-    }
-    div.like_button{
-      padding-top: 30px;
-      padding-bottom: 30px;
-      -ms-transform: scale(1.5); /* IE */
-      -moz-transform: scale(1.5); /* FF */
-      -webkit-transform: scale(1.5); /* Safari and Chrome */
-      -o-transform: scale(1.5); /* Opera */
+      margin: 0 auto;
+      img.title{
+        width: 94px;
+      }
+      img.image{
+        width: 242px;
+      }
+      div.like_button{
+        padding-top: 30px;
+        padding-bottom: 30px;
+        -ms-transform: scale(1.5); /* IE */
+        -moz-transform: scale(1.5); /* FF */
+        -webkit-transform: scale(1.5); /* Safari and Chrome */
+        -o-transform: scale(1.5); /* Opera */
+      }
     }
   }
   div.login{
