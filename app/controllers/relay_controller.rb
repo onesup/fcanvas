@@ -49,8 +49,8 @@ class RelayController < ApplicationController
         Rails.logger.info "@@@@@@ go to mobile_path"
         redirect_to mobile_relay_path({uid: params[:uid]})
       else
-        Rails.logger.info "@@@@@@ go to mobile_gate_path"
-        redirect_to mobile_relay_fangate_path({uid: params[:uid]})
+        Rails.logger.info "@@@@@@ need login"
+        # redirect_to mobile_relay_fangate_path({uid: params[:uid]})
       end
     else
       render :layout => false
