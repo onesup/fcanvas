@@ -20,6 +20,29 @@
   <div id="fb-root"></div>
 <script type="text/javascript">
 
+function spin(){
+  var opts = {
+    lines: 12, // The number of lines to draw
+    length: 15, // The length of each line
+    width: 8, // The line thickness
+    radius: 12, // The radius of the inner circle
+    corners: 1, // Corner roundness (0..1)
+    rotate: 0, // The rotation offset
+    direction: 1, // 1: clockwise, -1: counterclockwise
+    color: '#000', // #rgb or #rrggbb or array of colors
+    speed: 1, // Rounds per second
+    trail: 60, // Afterglow percentage
+    shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+    className: 'spinner', // The CSS class to assign to the spinner
+    zIndex: 29, // The z-index (defaults to 2000000000)
+    left: 122-35, // Left position relative to parent in px
+    top: 23-35 // Top position relative to parent in px
+  };
+  var target = document.getElementById('like_button');
+  var spinner = new Spinner(opts).spin(target);
+};
+
 function verifyUserLikesPage() {
   FB.api("/me/likes/<%= FACEBOOK_CONFIG[:relay][:page_id]%>", function(apiResponse){
     if (apiResponse.data && apiResponse.data.length > 0){
@@ -41,7 +64,7 @@ $(document).ready(function() {
       xfbml      : true  // parse XFBML
     });
     FB.Event.subscribe('edge.create', function(href, widget){
-      // spin();
+      spin();
       verifyUserLikesPage();
     });
     FB.Event.subscribe('edge.remove', function(href, widget){
