@@ -27,13 +27,14 @@ class RelayController < ApplicationController
   end
   
   def mobile_fangate
+    Rails.logger.info "@@@@@@ fangate start @@@@@@@@"
     if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false
       user = User.find_by_uid(params[:uid])
       if check_like(user) == true
         Rails.logger.info "@@@@@@ go to mobile_path"
         redirect_to mobile_relay_path({uid: params[:uid]})
       else
-        render :layout => 'mobile_relay'
+        # render :layout => 'mobile_relay'
       end
     else
       redirect_to mobile_relay_login_path
@@ -41,7 +42,7 @@ class RelayController < ApplicationController
   end
   
   def mobile_relay
-    if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false
+    if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false      
       user = User.find_by_uid(params[:uid])
       if check_like(user) == false
         redirect_to mobile_relay_login_path({uid: params[:uid]})
@@ -53,6 +54,7 @@ class RelayController < ApplicationController
   end
   
   def mobile_login
+    Rails.logger.info "@@@@@@ mobile_login start @@@@@@@@"
     if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false
       user = User.find_by_uid(params[:uid])
       if check_like(user) == true
