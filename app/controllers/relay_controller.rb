@@ -1,5 +1,5 @@
 class RelayController < ApplicationController
-  layout 'relay'
+  layout 'relay'# , except: [:new, :edit]
   def index
     @user_agent = UserAgent.parse(request.user_agent)
     if @user_agent.mobile?
@@ -27,6 +27,7 @@ class RelayController < ApplicationController
   end
   
   def mobile_fangate
+    render layout: 'mobile_relay'
     Rails.logger.info "@@@@@@ fangate start @@@@@@@@"
     if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false
       user = User.find_by_uid(params[:uid])

@@ -35,7 +35,30 @@ table thead.skip {position:static;margin:0;padding:0;height:0;font-size:0;line-h
 table thead.skip th,table thead.skip td {margin:0;padding:0;height:0;font-size:0;line-height:0;border:0;visibility:hidden;overflow:hidden;}
 hr {display:none;}
 img {max-width:100%;}
-
+div.like_wrap{
+  width: 100%;
+  margin: auto 0;
+  padding-top: 30px;
+  text-align: center;
+  div.like_box{
+    width: 242px;
+    margin: 0 auto;
+    img.title{
+      width: 94px;
+    }
+    img.image{
+      width: 242px;
+    }
+    div.like_button{
+      padding-top: 30px;
+      padding-bottom: 30px;
+      -ms-transform: scale(1.5); /* IE */
+      -moz-transform: scale(1.5); /* FF */
+      -webkit-transform: scale(1.5); /* Safari and Chrome */
+      -o-transform: scale(1.5); /* Opera */
+    }
+  }
+}
 .clear {
 	clear:both;
 	display:block;

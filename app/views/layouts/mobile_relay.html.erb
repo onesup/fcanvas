@@ -64,11 +64,13 @@ $(document).ready(function() {
       xfbml      : true  // parse XFBML
     });
     FB.Event.subscribe('edge.create', function(href, widget){
+      console.log("create");
       spin();
       verifyUserLikesPage();
     });
     FB.Event.subscribe('edge.remove', function(href, widget){
       // spin();
+      console.log("remove");
       verifyUserLikesPage();
     });
   });
