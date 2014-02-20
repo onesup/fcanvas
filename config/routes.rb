@@ -1,5 +1,6 @@
 Fcanvas::Application.routes.draw do
 
+  devise_for :manto_users
   get "wall_posts/create"
   get 'test' => 'page_tab#test'
   get 'children' => 'home#index'
@@ -46,5 +47,6 @@ Fcanvas::Application.routes.draw do
 
   resources :wall_posts, only: [:create]
   resources :users, only: [:create]
+  resources :manto_users, only: [:create]
   root 'page_tab#index'  
 end

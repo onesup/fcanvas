@@ -1,5 +1,6 @@
 class Token < ActiveRecord::Base
   belongs_to :user
+  belongs_to :manto_user
   belongs_to :identifiable, polymorphic: true
   
   def self.create_or_update_token!(user_or_page, access_token)

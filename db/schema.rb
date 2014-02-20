@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017010454) do
+ActiveRecord::Schema.define(version: 20140220043904) do
 
   create_table "heroes", force: true do |t|
     t.integer  "total"
@@ -23,6 +23,27 @@ ActiveRecord::Schema.define(version: 20131017010454) do
 
   add_index "heroes", ["user_id"], name: "index_heroes_on_user_id"
   add_index "heroes", ["wall_post_id"], name: "index_heroes_on_wall_post_id"
+
+  create_table "manto_users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "relationship"
+    t.string   "profile_image"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tokens", force: true do |t|
     t.string   "access_token"

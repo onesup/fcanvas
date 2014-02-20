@@ -45,7 +45,7 @@ function login(response){
   var accessToken = response.authResponse.accessToken;
   $.ajax({
     type: "POST",
-    url: "/users",
+    url: "/manto_users",
     data: {uid: uid, access_token: accessToken, test: "test"},
     headers: {
       'X-Transaction': 'POST Example',

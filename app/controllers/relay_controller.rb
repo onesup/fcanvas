@@ -28,8 +28,8 @@ class RelayController < ApplicationController
   
   def mobile_fangate
     Rails.logger.info "@@@@@@ fangate start @@@@@@@@"
-    if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false
-      user = User.find_by_uid(params[:uid])
+    if params[:uid].nil? == false and MantoUser.exists?(uid: params[:uid]).nil? == false
+      user = MantoUser.find_by_uid(params[:uid])
       if check_like(user) == true
         Rails.logger.info "@@@@@@ go to mobile_path"
         redirect_to mobile_relay_path({uid: params[:uid]})
@@ -44,8 +44,8 @@ class RelayController < ApplicationController
   end
   
   def mobile_relay
-    if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false      
-      user = User.find_by_uid(params[:uid])
+    if params[:uid].nil? == false and MantoUser.exists?(uid: params[:uid]).nil? == false      
+      user = MantoUser.find_by_uid(params[:uid])
       if check_like(user) == false
         redirect_to mobile_relay_login_path({uid: params[:uid]})
       else
@@ -57,17 +57,17 @@ class RelayController < ApplicationController
   
   def mobile_login
     Rails.logger.info "@@@@@@ mobile_login start @@@@@@@@"
-    if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false
-      # user = User.find_by_uid(params[:uid])
-      # if check_like(user) == true
-      #   Rails.logger.info "@@@@@@ go to mobile_path"
-      #   redirect_to mobile_relay_path({uid: params[:uid]})
-      # else
-        Rails.logger.info "@@@@@@ get auth success"
+    if params[:uid].nil? == false and MantoUser.exists?(uid: params[:uid]).nil? == false
+      user = MantoUser.find_by_uid(params[:uid])
+      if check_like(user) == true
+        Rails.logger.info "@@@@@@ go to mobile_path"
+        redirect_to mobile_relay_path({uid: params[:uid]})
+      else
+        Rails.logger.info "@@@@@@ auth success"
         redirect_to mobile_relay_fangate_path({uid: params[:uid]})
-      # end
+      end
     else
-      Rails.logger.info "@@@@@@ auth success failed"
+      Rails.logger.info "@@@@@@ auth failed"
       render :layout => false
     end    
   end
