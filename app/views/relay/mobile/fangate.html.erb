@@ -1,0 +1,9 @@
+<div class="like_wrap">
+  <div class="like_box">
+    <%= image_tag "relay_mobile_like_title.jpg", class: "title" %>
+    <div class="like_button" id="like_button">
+      <fb:like href="<%= FACEBOOK_CONFIG[:relay][:page_address]%>" colorscheme="light" layout="button_count" action="like" show_faces="false" send="false"></fb:like>
+    </div>
+    <%= image_tag "relay_mobile_like_img.jpg", class: "image" %>
+  </div>
+</div>

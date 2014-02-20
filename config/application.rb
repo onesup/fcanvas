@@ -12,7 +12,6 @@ module Fcanvas
     config.force_ssl = false
     config.time_zone = 'Asia/Seoul'
     config.i18n.default_locale = :ko_KR
-    config.assets.precompile += ['application.js', 'application.css', 'admin.js', 'admin.css', 'mobile.css', 'mobile.js']
     FACEBOOK_CONFIG = YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env]
     config.middleware.use Rack::Facebook::SignedRequest, app_id: FACEBOOK_CONFIG[:app_id], secret: FACEBOOK_CONFIG[:app_secret], inject_facebook: false
     config.middleware.use P3P::Middleware
@@ -27,5 +26,11 @@ module Fcanvas
       # 'X-Content-Type-Options' => 'nosniff',
       'X-Frame-Options' => 'ALLOW-FROM https://www.facebook.com'
     }
+    config.assets.precompile += [
+      'application.js', 'application.css', 
+      'admin.js', 'admin.css', 
+      'mobile.css', 'mobile.js',
+      'relay.js'
+    ]
   end
 end

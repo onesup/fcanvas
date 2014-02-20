@@ -1,0 +1,2 @@
+module Relay::MobileHelper
+end

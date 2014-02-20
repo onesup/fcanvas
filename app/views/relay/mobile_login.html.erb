@@ -11,101 +11,10 @@
   <meta property="og:type"   content="myapp:myobject" />
 </head>
 <body id="mobile">
-  <div id="fb-root"></div>
-<script type="text/javascript">
-function spin(){
-  var opts = {
-    lines: 13, // The number of lines to draw
-    length: 20, // The length of each line
-    width: 10, // The line thickness
-    radius: 30, // The radius of the inner circle
-    corners: 1, // Corner roundness (0..1)
-    rotate: 0, // The rotation offset
-    direction: 1, // 1: clockwise, -1: counterclockwise
-    color: '#000', // #rgb or #rrggbb or array of colors
-    speed: 1, // Rounds per second
-    trail: 60, // Afterglow percentage
-    shadow: false, // Whether to render a shadow
-    hwaccel: false, // Whether to use hardware acceleration
-    className: 'spinner', // The CSS class to assign to the spinner
-    zIndex: 29, // The z-index (defaults to 2000000000)
-    left: 116-60, // Left position relative to parent in px
-    top: 160-60 // Top position relative to parent in px
-  };
-  var target = document.getElementById('join');
-  var spinner = new Spinner(opts).spin(target);
-};
-
-function reload(uid){
-  window.location.href = "/mobile_relay_login/"+uid;
-};
-function login(response){
-  spin();
-  var uid = response.authResponse.userID;
-  var accessToken = response.authResponse.accessToken;
-  $.ajax({
-    type: "POST",
-    url: "/manto_users",
-    data: {uid: uid, access_token: accessToken, test: "test"},
-    headers: {
-      'X-Transaction': 'POST Example',
-      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-    },
-    success: reload(uid)
-  });
-};
-
-var cb = function(response){
-  if (response.status === 'connected') {
-    login(response);
-  } else if (response.status === 'not_authorized') {
-    alert('캠페인 참여를 위해 페이스북 로그인이 필요합니다.');
-  } else {
-    alert('페이스북 로그인이 필요합니다.');
-  }
-};
-
-function fb_auth(e){
-  e.preventDefault();
-  FB.getLoginStatus(function(response) {
-    if (response.status === 'not_authorized') {
-      FB.login(cb,{
-        scope: 'email, user_birthday'
-      });
-      login(response);
-    }else if (response.status === 'connected'){
-      login(response);
-    }else{
-      FB.login(cb,{
-        scope: 'email, user_birthday'
-      });
-      login(response);
-    }
-  });
-};
-
-$(document).ready(function() {
-  $.ajaxSetup({ cache: true });
-  $.getScript('//connect.facebook.net/ko_KR/all.js', function(){
-    FB.init({
-      appId      : '<%= FACEBOOK_CONFIG[:relay][:app_id] %>',     // App ID from the appdashboard
-      channelUrl : '//<%= FACEBOOK_CONFIG[:relay][:domain] %>/channel.html', // Channel file for x-domain comms
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true  // parse XFBML
-    });
-    
-    $('#join').bind('click', function(e) {
-      fb_auth(e);
-    });
-  });
-});
-
-</script>
-<div class="login">
-  <div class="login_box">
-    <%= link_to image_tag("login.jpg"), nil, title: "join", id: "join" %>
+  <div class="login">
+    <div class="login_box">
+      <%= link_to image_tag("login.jpg"), nil, title: "join", id: "join" %>
+    </div>
   </div>
-</div>
 </body>
 </html>
