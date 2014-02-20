@@ -67,6 +67,7 @@ class RelayController < ApplicationController
         redirect_to mobile_relay_fangate_path({uid: params[:uid]})
       # end
     else
+      Rails.logger.info "@@@@@@ auth success failed"s
       render :layout => false
     end    
   end
