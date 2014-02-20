@@ -27,15 +27,16 @@ class RelayController < ApplicationController
   end
   
   def mobile_fangate
-    render layout: 'mobile_relay'
     Rails.logger.info "@@@@@@ fangate start @@@@@@@@"
     if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false
       user = User.find_by_uid(params[:uid])
       if check_like(user) == true
         Rails.logger.info "@@@@@@ go to mobile_path"
         redirect_to mobile_relay_path({uid: params[:uid]})
+      elsif check_like(user) == "auth error" or check_like(user) == "client error"
+        redirect_to mobile_relay_login_path
       else
-        # render :layout => 'mobile_relay'
+        render layout: 'mobile_relay'
       end
     else
       redirect_to mobile_relay_login_path
