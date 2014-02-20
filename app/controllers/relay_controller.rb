@@ -58,14 +58,14 @@ class RelayController < ApplicationController
   def mobile_login
     Rails.logger.info "@@@@@@ mobile_login start @@@@@@@@"
     if params[:uid].nil? == false and User.exists?(uid: params[:uid]).nil? == false
-      user = User.find_by_uid(params[:uid])
-      if check_like(user) == true
-        Rails.logger.info "@@@@@@ go to mobile_path"
-        redirect_to mobile_relay_path({uid: params[:uid]})
-      else
-        Rails.logger.info "@@@@@@ need login"
+      # user = User.find_by_uid(params[:uid])
+      # if check_like(user) == true
+      #   Rails.logger.info "@@@@@@ go to mobile_path"
+      #   redirect_to mobile_relay_path({uid: params[:uid]})
+      # else
+        Rails.logger.info "@@@@@@ get auth success"
         redirect_to mobile_relay_fangate_path({uid: params[:uid]})
-      end
+      # end
     else
       render :layout => false
     end    
