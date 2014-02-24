@@ -1,6 +1,5 @@
 Fcanvas::Application.routes.draw do
 
-  devise_for :manto_users
   get "wall_posts/create"
   get 'test' => 'page_tab#test'
   get 'children' => 'home#index'
@@ -54,8 +53,12 @@ Fcanvas::Application.routes.draw do
     get 'mobile_fangate/:uid' => 'mobile#fangate'# , as: "mobile_relay_fangate_id"
   end
 
+  devise_for :manto_users, controllers: { :omniauth_callbacks => "omniauth_callbacks" } do
+  end
+  
+  resources :manto_users, only: [:create]
   resources :wall_posts, only: [:create]
   resources :users, only: [:create]
-  resources :manto_users, only: [:create]
+  
   root 'page_tab#index'  
 end

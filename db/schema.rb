@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220043904) do
+ActiveRecord::Schema.define(version: 20140224050942) do
 
   create_table "heroes", force: true do |t|
     t.integer  "total"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20140220043904) do
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
+    t.string   "avatar"
   end
 
   create_table "tokens", force: true do |t|

@@ -127,9 +127,9 @@ $(document).ready(function() {
       xfbml      : true  // parse XFBML
     });
     
-    $('#join').bind('click', function(e) {
-      fb_auth(e);
-    });
+    // $('#join').bind('click', function(e) {
+    //   fb_auth(e);
+    // });
     FB.Event.subscribe('edge.create', function(href, widget){
       like_spin();
       var uid;

@@ -1,5 +1,5 @@
 <div class="login">
   <div class="login_box">
-    <%= link_to image_tag("login.jpg"), nil, title: "join", id: "join" %>
+    <%= link_to image_tag("login.jpg"), omniauth_authorize_path(:manto_user, "facebook"), id:"join" %><br />
   </div>
 </div>
