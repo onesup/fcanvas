@@ -62,11 +62,26 @@ function like_spin(){
 };
 
 function verifyUserLikesPage(uid) {
-  FB.api("/me/likes/<%= FACEBOOK_CONFIG[:relay][:page_id]%>", function(apiResponse){
-    if (apiResponse.data && apiResponse.data.length > 0){
-      window.location.href = "/relay/mobile_login/"+uid+"?like=true";
+  var result;
+  $.ajax({
+    url:"/relay/check_like.json?uid="+uid,
+    dataType: "JSON",
+    type: "GET",
+    success: function(response) {
+      if(response.result === true){
+        result = true;
+        window.location.href = "/relay/mobile_login/"+uid+"?like=true";
+      }else{
+        window.location.href = "/relay/mobile_login";
+      }
     }
   });
+  
+  // FB.api("/me/likes/<%= FACEBOOK_CONFIG[:relay][:page_id]%>", function(apiResponse){
+  //   if (apiResponse.data && apiResponse.data.length > 0){
+  //     window.location.href = "/relay/mobile_login/"+uid+"?like=true";
+  //   }
+  // });
 };
 function reload(uid){
   window.location.href = "/relay/mobile_login/"+uid;

@@ -45,7 +45,7 @@ class Relay::MobileController < ApplicationController
       Rails.logger.info "@@@@@@ auth failed"
     end    
   end
-  
+    
   private
       
     def check_like(user)

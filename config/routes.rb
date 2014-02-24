@@ -51,6 +51,7 @@ Fcanvas::Application.routes.draw do
     get 'mobile_login/:uid' => 'mobile#login'# , as: "mobile_relay_login_id"
     get 'mobile_fangate' => 'mobile#fangate'# , as: "mobile_relay_fangate"
     get 'mobile_fangate/:uid' => 'mobile#fangate'# , as: "mobile_relay_fangate_id"
+    get 'check_like' => 'mobile#check_like'
   end
 
   devise_for :manto_users, controllers: { :omniauth_callbacks => "omniauth_callbacks" } do
