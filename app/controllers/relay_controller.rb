@@ -85,7 +85,7 @@ class RelayController < ApplicationController
     
     def check_like(user)
       page_id = FACEBOOK_CONFIG[:relay][:page_id]
-      token = user.token.access_token
+      token = user.token
       api = Koala::Facebook::API.new(token)
       result = false
       begin
