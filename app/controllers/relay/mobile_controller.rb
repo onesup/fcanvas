@@ -26,7 +26,6 @@ class Relay::MobileController < ApplicationController
       user = MantoUser.find_by_uid(params[:uid])
       Rails.logger.info("relay/mobile#index")
       result = user.check_like
-      binding.pry
       Rails.logger.info("@@@@@check_like: "+result.to_s)
       if result == false
         redirect_to relay_mobile_fangate_path({uid: params[:uid]})
