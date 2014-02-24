@@ -5,10 +5,13 @@ class Relay::MobileController < ApplicationController
     Rails.logger.info "@@@@@@ fangate start @@@@@@@@"
     if params[:uid].nil? == false and MantoUser.exists?(uid: params[:uid]).nil? == false
       user = MantoUser.find_by_uid(params[:uid])
-      if check_like(user) == true
+      Rails.logger.info("relay/mobile#fangate")
+      result = user.check_like
+      Rails.logger.info("@@@@@check_like: "+result.to_s)
+      if result == true
         Rails.logger.info "@@@@@@ go to mobile_path"
         redirect_to relay_mobile_path({uid: params[:uid]})
-      elsif check_like(user) == "auth error" or check_like(user) == "client error"
+      elsif result == "auth error" or result == "client error"
         redirect_to relay_mobile_login_path
       else
         # render layout: 'mobile_relay'
@@ -21,7 +24,10 @@ class Relay::MobileController < ApplicationController
   def index
     if params[:uid].nil? == false and MantoUser.exists?(uid: params[:uid]).nil? == false      
       user = MantoUser.find_by_uid(params[:uid])
-      if check_like(user) == false
+      Rails.logger.info("relay/mobile#index")
+      result = user.check_like
+      Rails.logger.info("@@@@@check_like: "+result.to_s)
+      if result == false
         redirect_to relay_mobile_fangate_path({uid: params[:uid]})
       else
       end
@@ -34,7 +40,10 @@ class Relay::MobileController < ApplicationController
     Rails.logger.info "@@@@@@ mobile_login start @@@@@@@@"
     if params[:uid].nil? == false and MantoUser.exists?(uid: params[:uid]).nil? == false
       user = MantoUser.find_by_uid(params[:uid])
-      if check_like(user) == true
+      Rails.logger.info("relay/mobile#login")
+      result = user.check_like
+      Rails.logger.info("@@@@@check_like: "+result.to_s)
+      if result == true
         Rails.logger.info "@@@@@@ go to mobile_path"
         redirect_to relay_mobile_path({uid: params[:uid]})
       else
@@ -45,30 +54,5 @@ class Relay::MobileController < ApplicationController
       Rails.logger.info "@@@@@@ auth failed"
     end    
   end
-    
-  private
       
-    def check_like(user)
-      page_id = FACEBOOK_CONFIG[:relay][:page_id]
-      token = user.token
-      api = Koala::Facebook::API.new(token)
-      result = false
-      begin
-        query = api.get_connections("me","likes/" + page_id)
-        result = true unless query.empty?
-        info = "true"
-      rescue Koala::Facebook::AuthenticationError
-        Rails.logger.info "auth error!! uid: " + user.uid
-        session[:facebook_uid] = nil
-        result = false
-        info = "auth error"
-      rescue Koala::Facebook::ClientError
-        Rails.logger.info "client error!! uid: " + user.uid
-        session[:facebook_uid] = nil
-        result = false
-        info = "client error"
-      end
-      Rails.logger.info "@@@@@check_like: "+ result.to_s
-      return result
-    end
 end

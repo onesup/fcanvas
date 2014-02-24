@@ -44,6 +44,30 @@ class MantoUser < ActiveRecord::Base
     end
   end
   
+  def check_like
+    page_id = FACEBOOK_CONFIG[:relay][:page_id]
+    token = self.token
+    api = Koala::Facebook::API.new(token)
+    result = false
+    begin
+      query = api.get_connections("me","likes/" + page_id)
+      result = true unless query.empty?
+      info = "true"
+    rescue Koala::Facebook::AuthenticationError
+      Rails.logger.info "auth error!! uid: " + user.uid
+      session[:facebook_uid] = nil
+      result = false
+      result = "auth error"
+    rescue Koala::Facebook::ClientError
+      Rails.logger.info "client error!! uid: " + user.uid
+      session[:facebook_uid] = nil
+      result = false
+      result = "client error"
+    end
+    Rails.logger.info "@@@@@check_like: "+ result.to_s
+    return result
+  end
+  
   
   def self.create_or_find_fan!(uid, access_token)
     unless exists?(uid: uid)
