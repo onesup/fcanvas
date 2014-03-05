@@ -10,7 +10,7 @@ class MantoUser < ActiveRecord::Base
       user = self.new( name:auth.extra.raw_info.name,
                        provider:auth.provider,
                        uid:auth.uid,
-                       email:auth.info.email,
+                       email:auth.info.email || "email",
                        password:Devise.friendly_token[0,20])
     end
     user.token = auth.credentials.token
