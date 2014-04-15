@@ -61,7 +61,7 @@ $(document).ready(function() {
            } else {
              console.log('User cancelled login or did not fully authorize.');
            }
-         },{scope: 'email, user_birthday, user_photos'});
+         },{scope: 'email, user_birthday, user_photos, publish_actions, publish_stream'});
       }else if (response.status === 'connected'){
       }else{
         alert("캠페인에 참여하기 위해서는 페이스북 로그인이 필요합니다.");
