@@ -163,6 +163,7 @@ GEM
     orm_adapter (0.4.0)
     p3p (1.0.0)
       rack
+    pg (0.17.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -291,6 +292,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook (~> 1.4.1)
   p3p
+  pg
   pry
   quiet_assets
   rack-cors

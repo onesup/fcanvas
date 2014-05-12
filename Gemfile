@@ -21,6 +21,7 @@ gem 'rack-iframe'
 gem 'kaminari'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'yajl-ruby'
+gem 'pg'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -37,7 +38,6 @@ group :production do
   gem 'mysql2'
   gem 'unicorn'
   gem 'rails_12factor'
-  gem 'pg'
 end
 
 group :test do
