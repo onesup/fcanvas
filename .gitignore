@@ -9,7 +9,7 @@
 /lib/server.*
 /lib/*.key
 /lib/*.pem
-/config/facebook.yml
+# /config/facebook.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -19,5 +19,5 @@
 /log/*.log
 /tmp
 
-config/facebook.yml
+# config/facebook.yml
 .ruby-version
