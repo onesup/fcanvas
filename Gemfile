@@ -36,6 +36,8 @@ end
 group :production do
   gem 'mysql2'
   gem 'unicorn'
+  gem 'rails_12factor'
+  gem 'pg'
 end
 
 group :test do
