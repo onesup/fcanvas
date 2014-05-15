@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140224050942) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "heroes", force: true do |t|
     t.integer  "total"
     t.integer  "user_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20140224050942) do
     t.datetime "updated_at"
   end
 
-  add_index "heroes", ["user_id"], name: "index_heroes_on_user_id"
-  add_index "heroes", ["wall_post_id"], name: "index_heroes_on_wall_post_id"
+  add_index "heroes", ["user_id"], name: "index_heroes_on_user_id", using: :btree
+  add_index "heroes", ["wall_post_id"], name: "index_heroes_on_wall_post_id", using: :btree
 
   create_table "manto_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -58,8 +61,8 @@ ActiveRecord::Schema.define(version: 20140224050942) do
     t.datetime "updated_at"
   end
 
-  add_index "tokens", ["identifiable_id", "identifiable_type"], name: "index_tokens_on_identifiable_id_and_identifiable_type"
-  add_index "tokens", ["user_id"], name: "index_tokens_on_user_id"
+  add_index "tokens", ["identifiable_id", "identifiable_type"], name: "index_tokens_on_identifiable_id_and_identifiable_type", using: :btree
+  add_index "tokens", ["user_id"], name: "index_tokens_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -88,6 +91,6 @@ ActiveRecord::Schema.define(version: 20140224050942) do
     t.datetime "updated_at"
   end
 
-  add_index "wall_posts", ["user_id"], name: "index_wall_posts_on_user_id"
+  add_index "wall_posts", ["user_id"], name: "index_wall_posts_on_user_id", using: :btree
 
 end
