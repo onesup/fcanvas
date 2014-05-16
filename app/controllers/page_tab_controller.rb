@@ -1,6 +1,6 @@
 class PageTabController < ApplicationController
   def index
-    session[:facebook_params] = request.env['facebook.params']
+    # session[:facebook_params] = request.env['facebook.params']
     # require_like unless session[:facebook_params].nil?
     @wall_post = WallPost.new
     @wall_posts = WallPost.order('created_at DESC').page(params[:page]).per(5)
