@@ -6,5 +6,5 @@ if !Process.respond_to?(:fork) || Gem::Specification.find_all_by_name("spring").
   require 'rails/commands'
 else
   ARGV.unshift "rails"
-  load Gem.bin_path("spring", "spring")
+  # load Gem.bin_path("spring", "spring")
 end
