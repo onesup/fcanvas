@@ -71,15 +71,16 @@ $(document).ready(function() {
   
     $('#comment_open').bind('click', function(e) {
       e.preventDefault();
-      FB.getLoginStatus(function(response) {
-        if (response.status === 'not_authorized') {
-          FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
-        }else if (response.status === 'connected'){
-          comment_popup(response);
-        }else{
-          FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
-        }
-      });
+			alert("이벤트가 종료되었습니다.");
+      // FB.getLoginStatus(function(response) {
+      //   if (response.status === 'not_authorized') {
+      //     FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
+      //   }else if (response.status === 'connected'){
+      //     comment_popup(response);
+      //   }else{
+      //     FB.login(cb,{scope: 'email, publish_stream, user_relationship_details,user_photos'});
+      //   }
+      // });
     });
   
   });  
